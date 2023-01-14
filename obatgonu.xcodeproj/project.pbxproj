@@ -15,6 +15,7 @@
 		DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51CE297214600002DC6C /* BoardTest.cpp */; };
 		DCAB51D2297328A10002DC6C /* BitOps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D1297328A10002DC6C /* BitOps.cpp */; };
 		DCAB51D4297329770002DC6C /* BitOpsTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D3297329770002DC6C /* BitOpsTest.cpp */; };
+		DCAB51D629734F2A0002DC6C /* ColorGraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */; };
 		DCEE839F296B42FA00A871AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE839E296B42FA00A871AE /* main.cpp */; };
 		DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE83A7296B666900A871AE /* MiniMax.cpp */; };
 		DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834602971D59000DF81FD /* ColorGraph.cpp */; };
@@ -74,6 +75,7 @@
 		DCAB51D02973282F0002DC6C /* BitOps.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitOps.h; sourceTree = "<group>"; };
 		DCAB51D1297328A10002DC6C /* BitOps.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BitOps.cpp; sourceTree = "<group>"; };
 		DCAB51D3297329770002DC6C /* BitOpsTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BitOpsTest.cpp; sourceTree = "<group>"; };
+		DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColorGraphTest.cpp; sourceTree = "<group>"; };
 		DCEE8388296B373400A871AE /* libGameTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE8397296B42D100A871AE /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		DCEE839C296B42FA00A871AE /* run_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run_tests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +194,7 @@
 				DCAB51CE297214600002DC6C /* BoardTest.cpp */,
 				DCEE839E296B42FA00A871AE /* main.cpp */,
 				DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */,
+				DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAB51D629734F2A0002DC6C /* ColorGraphTest.cpp in Sources */,
 				DCAB51D4297329770002DC6C /* BitOpsTest.cpp in Sources */,
 				DCEE839F296B42FA00A871AE /* main.cpp in Sources */,
 				DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */,

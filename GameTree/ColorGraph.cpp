@@ -34,14 +34,18 @@ ColorGraph::Positions ColorGraph::build_positions(const Board& board,
                                                   const Cells& goal0,
                                                   const Cells& goal1)
 {
+   // C(n, k) where n is the number of cells of the given color and k is the
+   // number of pieces for each player.
    auto combos = generate_combos(board.num_cells(color),
                                  static_cast<int>(goal0.size()));
    Positions result;
    for (auto& combo : combos) {
+      // Collect the cells for the combination.
       Cells cells;
       for (auto index : combo) {
          cells.push_back(board.cell(color, index));
       }
+      // Add the new Position.
       result.push_back({
          board.bitboard(cells),
          board.bitboard(board.reflect_x(cells)),
@@ -62,10 +66,12 @@ std::pair<uint32_t, uint32_t> ColorGraph::get_keys(const Position& p0,
 bool ColorGraph::is_valid_combo(const Position& p0,
                                 const Position& p1) noexcept
 {
+   // Pieces must not overlap.
    if ((p0.pieces & p1.pieces) != 0) {
       return false;
    }
-
+   // We have two equivalent combinations, so we only need to create a node for
+   // one of them. We arbitrarily choose the one with the lowest key.
    auto [p_key, r_key] = get_keys(p0, p1);
    return p_key <= r_key;
 }
@@ -105,10 +111,12 @@ void ColorGraph::build_nodes(const Positions& positions,
          if (!is_valid_combo(p0, p1)) {
             continue;;
          }
-
+         // Index is the same as the node's position in the vector.
          auto index = static_cast<int>(nodes_.size());
          nodes_.push_back(build_node(index, p0, p1, goal0, goal1));
 
+         // Index the node both ways, so that both this combo and its
+         // reflection map to the same node.
          auto [p_key, r_key] = get_keys(p0, p1);
          index_[p_key] = index;
          index_[r_key] = index;
@@ -130,6 +138,8 @@ ColorNodes ColorGraph::build_p0_moves(const Position& p0,
    for (auto move : p0.moves) {
       if ((move & p1.pieces) == 0) {
          auto node = find(move, p1.pieces);
+         // Since we're consolidating equivalent positions, this move may
+         // already be in the vector.
          if (!contains(result, node)) {
             result.push_back(node);
          }

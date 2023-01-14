@@ -11,7 +11,7 @@
 TEST_CASE("Cell:neighbors")
 {
    auto neighbors = Cell(2,2).neighbors();
-   CHECK(neighbors.size() == 4);
+   REQUIRE(neighbors.size() == 4);
    CHECK(neighbors[0] == Cell(1,1));
    CHECK(neighbors[1] == Cell(1,3));
    CHECK(neighbors[2] == Cell(3,1));
@@ -108,7 +108,7 @@ TEST_CASE("Board::erase_out_of_bounds")
 
    Cells one_out = {{1,2}, {4,-1}, {3,0}};
    auto erased = board.erase_out_of_bounds(one_out);
-   CHECK(erased.size() == 2);
+   REQUIRE(erased.size() == 2);
    CHECK(erased[0] == Cell(1,2));
    CHECK(erased[1] == Cell(3,0));
 }
