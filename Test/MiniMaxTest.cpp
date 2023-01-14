@@ -1,4 +1,4 @@
-#include "Catch.hpp"
+#include "catch.hpp"
 #include "Graph.h"
 #include "MiniMax.h"
 

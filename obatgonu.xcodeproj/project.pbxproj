@@ -12,6 +12,7 @@
 		DC28F504296F7D80005FDC40 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F503296F7D80005FDC40 /* Graph.cpp */; };
 		DC28F512296F970B005FDC40 /* obatgonu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F506296F96EE005FDC40 /* obatgonu.cpp */; };
 		DC28F514296F9760005FDC40 /* libGameTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libGameTree.a */; };
+		DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51CE297214600002DC6C /* BoardTest.cpp */; };
 		DCEE839F296B42FA00A871AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE839E296B42FA00A871AE /* main.cpp */; };
 		DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE83A7296B666900A871AE /* MiniMax.cpp */; };
 		DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834602971D59000DF81FD /* ColorGraph.cpp */; };
@@ -60,7 +61,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DC28F4FB296DE438005FDC40 /* GameDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDefs.h; sourceTree = "<group>"; };
 		DC28F4FC296DE52B005FDC40 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		DC28F4FF296E202D005FDC40 /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		DC28F500296E4928005FDC40 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		DC28F503296F7D80005FDC40 /* Graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
 		DC28F506296F96EE005FDC40 /* obatgonu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = obatgonu.cpp; sourceTree = "<group>"; };
 		DC28F50B296F9700005FDC40 /* obatgonu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = obatgonu; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCAB51CE297214600002DC6C /* BoardTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoardTest.cpp; sourceTree = "<group>"; };
 		DCEE8388296B373400A871AE /* libGameTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE8397296B42D100A871AE /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		DCEE839C296B42FA00A871AE /* run_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run_tests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +156,6 @@
 				DC28F4FF296E202D005FDC40 /* Board.h */,
 				DCF834602971D59000DF81FD /* ColorGraph.cpp */,
 				DCF8345F2971D49E00DF81FD /* ColorGraph.h */,
-				DC28F4FB296DE438005FDC40 /* GameDefs.h */,
 				DC28F503296F7D80005FDC40 /* Graph.cpp */,
 				DC28F502296F4F7F005FDC40 /* Graph.h */,
 				DCEE83A7296B666900A871AE /* MiniMax.cpp */,
@@ -181,6 +181,7 @@
 		DCEE839D296B42FA00A871AE /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				DCAB51CE297214600002DC6C /* BoardTest.cpp */,
 				DCEE839E296B42FA00A871AE /* main.cpp */,
 				DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */,
 			);
@@ -321,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCEE839F296B42FA00A871AE /* main.cpp in Sources */,
+				DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */,
 				DCF834652971F31F00DF81FD /* MiniMaxTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,6 +4,11 @@
 #include "Board.h"
 #include <unordered_map>
 
+constexpr int num_players = 2;
+
+bool is_valid_player(int player) noexcept;
+int other_player(int player) noexcept;
+
 class ColorNode;
 using ColorNodes = std::vector<const ColorNode*>;
 
@@ -85,6 +90,16 @@ inline const ColorNode* ColorGraph::root() const noexcept
 inline int ColorGraph::size() const noexcept
 {
    return static_cast<int>(nodes_.size());
+}
+
+inline bool is_valid_player(int player) noexcept
+{
+   return (player >= 0) && (player < num_players);
+}
+
+inline int other_player(int player) noexcept
+{
+   return player ? 0 : 1;
 }
 
 #endif /* ColorGraph_h */
