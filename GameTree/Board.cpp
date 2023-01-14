@@ -115,7 +115,12 @@ int Board::ordinal(const Cell& cell) const noexcept
 
 Cell Board::cell(Color color, int ordinal) const noexcept
 {
-   auto full_ordinal = ordinal * 2 + color;
+   auto full_ordinal = ordinal * 2;
+   if (((width_ % 2) != 0) || ((full_ordinal % width_)  != 0)) {
+      full_ordinal += color;
+   } else {
+      full_ordinal += (1 - color);
+   }
    return { full_ordinal % width_, full_ordinal / width_ };
 }
 
@@ -201,7 +206,7 @@ ColorBitBoards Board::moves(const Cells& from) const
       auto neighbors = erase_out_of_bounds(from[i].neighbors());
       // Now see if any of the remaining neighbors are blocked by other pieces.
       for (auto neighbor : neighbors) {
-         if (std::find(from.begin(), from.end(), neighbor) == from.end()) {
+         if (!contains(from, neighbor)) {
             to[i] = neighbor;
             result.push_back(bitboard(to));
           }

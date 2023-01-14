@@ -84,11 +84,31 @@ TEST_CASE("Board::num_cells")
 
 TEST_CASE("Board::ordinal <--> Board::cell")
 {
-   Board board(5, 5);
-   Cell black = {3, 3};
-   CHECK(board.cell(BLACK, board.ordinal(black)) == black);
-   Cell white = {2, 3};
-   CHECK(board.cell(WHITE, board.ordinal(white)) == white);
+   SECTION("Odd board width")
+   {
+      Board board(3, 3);
+      // BLACK & even row
+      CHECK(board.cell(BLACK, board.ordinal({2,0})) == Cell(2,0));
+      // BLACK & odd row
+      CHECK(board.cell(BLACK, board.ordinal({1,1})) == Cell(1,1));
+      // WHITE & even row
+      CHECK(board.cell(WHITE, board.ordinal({0,1})) == Cell(0,1));
+      // WHITE & odd row
+      CHECK(board.cell(WHITE, board.ordinal({1,0})) == Cell(1,0));
+   }
+
+   SECTION("Even board width")
+   {
+      Board board(4, 4);
+      // BLACK & even row
+      CHECK(board.cell(BLACK, board.ordinal({2,0})) == Cell(2,0));
+      // BLACK & odd row
+      CHECK(board.cell(BLACK, board.ordinal({1,1})) == Cell(1,1));
+      // WHITE & even row
+      CHECK(board.cell(WHITE, board.ordinal({3,0})) == Cell(3,0));
+      // WHITE & odd row
+      CHECK(board.cell(WHITE, board.ordinal({0,1})) == Cell(0,1));
+   }
 }
 
 TEST_CASE("Board::out_of_bounds")
