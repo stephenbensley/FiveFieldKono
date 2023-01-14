@@ -1,5 +1,11 @@
+//
+// Copyright 2023 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
+//
+
 #include "Node.h"
-#include <cassert>
 
 Node::Node(int player, const ColorNode* black, const ColorNode* white) noexcept
 : player_(player),
@@ -34,6 +40,8 @@ int Node::value() const noexcept
 std::vector<Node> Node::moves() const
 {
    auto next = other_player(player());
+
+   // Player can move a black piece or a white piece.
    std::vector<Node> result;
    for (auto move : black().moves) {
       result.push_back(Node(next, move, white_));
@@ -66,6 +74,8 @@ bool Node::no_moves() const noexcept
 
 bool Node::is_winner(int idx) const noexcept
 {
+   // Player's goal must be full and at least one of the pieces in the goal
+   // must belong to the player.
    return black().goal_full && white().goal_full &&
          (black().goal_reached || white().goal_reached);
 }
