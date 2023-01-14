@@ -210,18 +210,6 @@ BitBoards Board::moves(const Cells& from) const
    return result;
 }
 
-int num_pieces(BitBoard bits) noexcept
-{
-   auto num = 0;
-   while (bits) {
-      if (bits & 1) {
-         ++num;
-      }
-      bits >>= 1;
-   }
-   return num;
-}
-
 std::vector<std::vector<int>> generate_combos(int n, int k)
 {
    assert(n > 0);

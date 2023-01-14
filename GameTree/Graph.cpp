@@ -1,25 +1,5 @@
 #include "Graph.h"
-
-uint16_t even_bits(uint32_t src) noexcept
-{
-   uint16_t dst = 0;
-   uint32_t src_bit = 1;
-   uint16_t dst_bit = 1;
-   do {
-      if (src & src_bit) {
-         dst |= dst_bit;
-      }
-      src_bit <<= 2;
-      dst_bit <<= 1;
-   } while (src_bit != 0);
-
-   return dst;
-}
-
-uint16_t odd_bits(uint32_t src) noexcept
-{
-   return even_bits(src >> 1);
-}
+#include "BitOps.h"
 
 Graph::Graph(const Board& board, uint32_t start0)
 : black_(board, BLACK, even_bits(start0)),

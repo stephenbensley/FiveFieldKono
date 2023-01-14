@@ -103,9 +103,6 @@ private:
    int height_;
 };
 
-// Number of pieces represented by the BitBoard.
-int num_pieces(BitBoard bits) noexcept;
-
 // Helper function to generate all possible combinations C(n, k). Useful for
 // enumerating all board positions.
 std::vector<std::vector<int>> generate_combos(int n, int k);

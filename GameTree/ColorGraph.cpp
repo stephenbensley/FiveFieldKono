@@ -1,10 +1,5 @@
 #include "ColorGraph.h"
-
-uint32_t concat(BitBoard bits1, BitBoard bits2) noexcept
-{
-   return static_cast<uint32_t>(bits1) << 16 |
-          static_cast<uint32_t>(bits2);
-}
+#include "BitOps.h"
 
 bool contains(const ColorNodes& nodes, const ColorNode* node) noexcept
 {
