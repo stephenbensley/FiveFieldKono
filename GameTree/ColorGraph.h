@@ -25,7 +25,7 @@ struct ColorNode {
    struct Player {
       // Locations of the player's pieces, where the bit corresponds to the
       // ordinal.
-      BitBoard pieces;
+      ColorBitBoard pieces;
       // True if at least one of the player's pieces is currently on a goal
       // cell.
       bool goal_reached;
@@ -52,7 +52,7 @@ public:
    // position is simply the reflection of this.
    ColorGraph(const Board& board,
               Color color,
-              BitBoard start0);
+              ColorBitBoard start0);
 
    // Starting position of the game.
    const ColorNode* start() const noexcept;
@@ -64,13 +64,13 @@ private:
    // construction.
    struct Position {
       // Location of the pieces.
-      BitBoard pieces;
+      ColorBitBoard pieces;
       // Location of the pieces reflected horizontally.
-      BitBoard reflected;
+      ColorBitBoard reflected;
       // Number of moves to the goal.
       short distance[num_players];
       // Valid moves from this position.
-      BitBoards moves;
+      ColorBitBoards moves;
    };
    using Positions = std::vector<Position>;
 
@@ -91,14 +91,14 @@ private:
    static ColorNode build_node(uint16_t index,
                                const Position& p0,
                                const Position& p1,
-                               BitBoard goal0,
-                               BitBoard goal1);
+                               ColorBitBoard goal0,
+                               ColorBitBoard goal1);
    // Builds all the ColorNodes that can be formed by combining positions.
    void build_nodes(const Positions& positions,
-                    BitBoard goal0,
-                    BitBoard goal1);
+                    ColorBitBoard goal0,
+                    ColorBitBoard goal1);
    // Returns the ColorNode corresponding to the specified positions.
-   ColorNode* find(BitBoard p0, BitBoard p1) noexcept;
+   ColorNode* find(ColorBitBoard p0, ColorBitBoard p1) noexcept;
    // Builds player 0's moves for the combo.
    ColorNodes build_p0_moves(const Position& p0,
                              const Position& p1);

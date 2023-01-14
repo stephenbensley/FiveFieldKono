@@ -25,13 +25,13 @@ constexpr int num_colors = 2;
 
 // We use bit fields to store the location of the pieces. There is one field for
 // each (player, color) pair.
-using BitBoard = uint16_t;
-using BitBoards = std::vector<BitBoard>;
+using ColorBitBoard = uint16_t;
+using ColorBitBoards = std::vector<ColorBitBoard>;
 
-bool contains(const BitBoards& boards, BitBoard board) noexcept;
+bool contains(const ColorBitBoards& boards, ColorBitBoard board) noexcept;
 
-// Since we're using a 16 bits for the BitBoard, each color can have at most
-// 16 cells, so the board can have at most 32.
+// Contains interleaved black & white ColorBitBoards.
+using BitBoard = uint32_t;
 constexpr int max_cells = 32;
 
 class Cell;
@@ -71,8 +71,8 @@ public:
 
    // Ordinals are zero-indexed starting at the lower left and increasing first
    // horizontally and then vertically. Ordinals are incremented separately
-   // for each color in order to keep the BitBoards densley packed. For example,
-   // a 3x3 board looks like this:
+   // for each color in order to keep the ColorBitBoards densley packed. For
+   // example, a 3x3 board looks like this:
    //    3 3 4
    //    1 2 2
    //    0 0 1
@@ -82,8 +82,8 @@ public:
    bool out_of_bounds(const Cell& cell) const noexcept;
    Cells erase_out_of_bounds(const Cells& cells) const;
 
-   BitBoard bitboard(const Cells& cells) const noexcept;
-   Cells cells(Color color, BitBoard bits) const;
+   ColorBitBoard bitboard(const Cells& cells) const noexcept;
+   Cells cells(Color color, ColorBitBoard bits) const;
 
    Cell reflect_x(const Cell& cell) const noexcept;
    Cell reflect_y(const Cell& cell) const noexcept;
@@ -91,12 +91,12 @@ public:
    Cells reflect_x(const Cells& cells) const;
    Cells reflect_y(const Cells& cells) const;
 
-   BitBoard reflect_x(Color color, BitBoard bits) const;
-   BitBoard reflect_y(Color color, BitBoard bits) const;
+   ColorBitBoard reflect_x(Color color, ColorBitBoard bits) const;
+   ColorBitBoard reflect_y(Color color, ColorBitBoard bits) const;
 
    // Returns all legal board positions that can be reached from the given
    // cells in a single move.
-   BitBoards moves(const Cells& from) const;
+   ColorBitBoards moves(const Cells& from) const;
 
 private:
    int width_;

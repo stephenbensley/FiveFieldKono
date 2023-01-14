@@ -1,7 +1,7 @@
 #include "Graph.h"
 #include "BitOps.h"
 
-Graph::Graph(const Board& board, uint32_t start0)
+Graph::Graph(const Board& board, BitBoard start0)
 : black_(board, BLACK, even_bits(start0)),
   white_(board, WHITE, odd_bits(start0))
 { }

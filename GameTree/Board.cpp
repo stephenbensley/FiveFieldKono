@@ -10,7 +10,7 @@
 #include <cassert>
 #include <limits>
 
-bool contains(const BitBoards& boards, BitBoard board) noexcept
+bool contains(const ColorBitBoards& boards, ColorBitBoard board) noexcept
 {
    return std::find(boards.begin(), boards.end(), board) != boards.end();
 }
@@ -134,7 +134,7 @@ Cells Board::erase_out_of_bounds(const Cells& cells) const
    return result;
 }
 
-BitBoard Board::bitboard(const Cells& cells) const noexcept
+ColorBitBoard Board::bitboard(const Cells& cells) const noexcept
 {
    auto result = 0;
    for (auto cell : cells) {
@@ -143,7 +143,7 @@ BitBoard Board::bitboard(const Cells& cells) const noexcept
    return result;
 }
 
-Cells Board::cells(Color color, BitBoard bits) const
+Cells Board::cells(Color color, ColorBitBoard bits) const
 {
    Cells result;
    for (auto i = 0; i < num_cells(color); ++i) {
@@ -182,19 +182,19 @@ Cells Board::reflect_y(const Cells& cells) const
    return result;
 }
 
-BitBoard Board::reflect_x(Color color, BitBoard bits) const
+ColorBitBoard Board::reflect_x(Color color, ColorBitBoard bits) const
 {
    return bitboard(reflect_x(cells(color, bits)));
 }
 
-BitBoard Board::reflect_y(Color color, BitBoard bits) const
+ColorBitBoard Board::reflect_y(Color color, ColorBitBoard bits) const
 {
    return bitboard(reflect_y(cells(color, bits)));
 }
 
-BitBoards Board::moves(const Cells& from) const
+ColorBitBoards Board::moves(const Cells& from) const
 {
-   BitBoards result;
+   ColorBitBoards result;
    for (auto i = 0; i < from.size(); ++i) {
       auto to(from);
       // Get from's neighbors and remove any that are off the board.

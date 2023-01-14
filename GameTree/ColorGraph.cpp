@@ -15,7 +15,7 @@ bool contains(const ColorNodes& nodes, const ColorNode* node) noexcept
 
 ColorGraph::ColorGraph(const Board& board,
                        Color color,
-                       BitBoard start0)
+                       ColorBitBoard start0)
 {
    auto goal1_bits = start0;
    auto goal1_cells = board.cells(color, goal1_bits);
@@ -79,8 +79,8 @@ bool ColorGraph::is_valid_combo(const Position& p0,
 ColorNode ColorGraph::build_node(uint16_t index,
                                  const Position& p0,
                                  const Position& p1,
-                                 BitBoard goal0,
-                                 BitBoard goal1)
+                                 ColorBitBoard goal0,
+                                 ColorBitBoard goal1)
 {
    auto all_pieces = p0.pieces | p1.pieces;
    return {
@@ -103,8 +103,8 @@ ColorNode ColorGraph::build_node(uint16_t index,
 }
 
 void ColorGraph::build_nodes(const Positions& positions,
-                             BitBoard goal0,
-                             BitBoard goal1)
+                             ColorBitBoard goal0,
+                             ColorBitBoard goal1)
 {
    for (auto p0 : positions) {
       for (auto p1 : positions) {
@@ -124,7 +124,7 @@ void ColorGraph::build_nodes(const Positions& positions,
    }
 }
 
-ColorNode* ColorGraph::find(BitBoard p0, BitBoard p1) noexcept
+ColorNode* ColorGraph::find(ColorBitBoard p0, ColorBitBoard p1) noexcept
 {
    auto i = index_.find(concat(p0, p1));
    assert (i != index_.end());

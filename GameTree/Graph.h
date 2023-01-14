@@ -7,7 +7,7 @@
 class Graph
 {
 public:
-   Graph(const Board& board, uint32_t start0);
+   Graph(const Board& board, BitBoard start0);
    int size() const noexcept;
    Node start() const noexcept;
    int index(const Node& node) const noexcept;
