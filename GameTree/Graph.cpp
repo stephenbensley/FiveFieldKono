@@ -1,3 +1,10 @@
+//
+// Copyright 2023 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
+//
+
 #include "Graph.h"
 #include "BitOps.h"
 
@@ -6,14 +13,15 @@ Graph::Graph(const Board& board, BitBoard start0)
   white_(board, WHITE, odd_bits(start0))
 { }
 
+Node Graph::start() const noexcept
+{
+   // Player 0 always goes first.
+   return { 0, black_.start(), white_.start() };
+}
+
 int Graph::size() const noexcept
 {
    return black_.size() * white_.size();
-}
-
-Node Graph::start() const noexcept
-{
-   return { 0, black_.start(), white_.start() };
 }
 
 int Graph::index(const Node& node) const noexcept
