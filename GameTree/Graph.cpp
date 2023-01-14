@@ -11,9 +11,9 @@ int Graph::size() const noexcept
    return black_.size() * white_.size();
 }
 
-Node Graph::root() const noexcept
+Node Graph::start() const noexcept
 {
-   return { 0, black_.root(), white_.root() };
+   return { 0, black_.start(), white_.start() };
 }
 
 int Graph::index(const Node& node) const noexcept

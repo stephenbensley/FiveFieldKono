@@ -5,6 +5,6 @@
 TEST_CASE("MiniMax::search")
 {
    Graph graph(Board(3, 3), 0b111);
-   auto result = MiniMax(graph).search(graph.root(), 10);
+   auto result = MiniMax(graph).search(graph.start(), 10);
    CHECK(result == +1);
 }

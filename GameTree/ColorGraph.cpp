@@ -1,3 +1,10 @@
+//
+// Copyright 2023 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
+//
+
 #include "ColorGraph.h"
 #include "BitOps.h"
 
@@ -19,7 +26,7 @@ ColorGraph::ColorGraph(const Board& board,
    auto positions = build_positions(board, color, goal0_cells, goal1_cells);
    build_nodes(positions, goal0_bits, goal1_bits);
    populate_moves(positions);
-   root_ = find(goal1_bits, goal0_bits);
+   start_ = find(goal1_bits, goal0_bits);
 }
 
 ColorGraph::Positions ColorGraph::build_positions(const Board& board,
