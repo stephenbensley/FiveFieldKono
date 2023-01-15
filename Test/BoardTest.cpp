@@ -8,6 +8,14 @@
 #include "catch.hpp"
 #include "Board.h"
 
+TEST_CASE("Cell::color")
+{
+   CHECK(Cell(0,0).color() == BLACK);
+   CHECK(Cell(1,0).color() == WHITE);
+   CHECK(Cell(0,1).color() == WHITE);
+   CHECK(Cell(1,1).color() == BLACK);
+}
+
 TEST_CASE("Cell:neighbors")
 {
    auto neighbors = Cell(2,2).neighbors();
@@ -87,27 +95,23 @@ TEST_CASE("Board::ordinal <--> Board::cell")
    SECTION("Odd board width")
    {
       Board board(3, 3);
-      // BLACK & even row
-      CHECK(board.cell(BLACK, board.ordinal({2,0})) == Cell(2,0));
-      // BLACK & odd row
-      CHECK(board.cell(BLACK, board.ordinal({1,1})) == Cell(1,1));
-      // WHITE & even row
-      CHECK(board.cell(WHITE, board.ordinal({0,1})) == Cell(0,1));
-      // WHITE & odd row
-      CHECK(board.cell(WHITE, board.ordinal({1,0})) == Cell(1,0));
+      for (auto x = 0; x < 3; ++x) {
+         for (auto y = 0; y < 3; ++y) {
+            Cell c(x, y);
+            CHECK(board.cell(c.color(), board.ordinal(c)) == c);
+         }
+      }
    }
 
    SECTION("Even board width")
    {
       Board board(4, 4);
-      // BLACK & even row
-      CHECK(board.cell(BLACK, board.ordinal({2,0})) == Cell(2,0));
-      // BLACK & odd row
-      CHECK(board.cell(BLACK, board.ordinal({1,1})) == Cell(1,1));
-      // WHITE & even row
-      CHECK(board.cell(WHITE, board.ordinal({3,0})) == Cell(3,0));
-      // WHITE & odd row
-      CHECK(board.cell(WHITE, board.ordinal({0,1})) == Cell(0,1));
+      for (auto x = 0; x < 4; ++x) {
+         for (auto y = 0; y < 4; ++y) {
+            Cell c(x, y);
+            CHECK(board.cell(c.color(), board.ordinal(c)) == c);
+         }
+      }
    }
 }
 

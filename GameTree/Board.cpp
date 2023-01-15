@@ -116,12 +116,16 @@ int Board::ordinal(const Cell& cell) const noexcept
 Cell Board::cell(Color color, int ordinal) const noexcept
 {
    auto full_ordinal = ordinal * 2;
-   if (((width_ % 2) != 0) || ((full_ordinal % width_)  != 0)) {
+   // For odd-width boards, the white squares are always offset by one.
+   if ((width_ % 2) != 0) {
       full_ordinal += color;
-   } else {
-      full_ordinal += (1 - color);
+   // For even-width boards, white is offset in even rows and black in odd rows.
+   } else if (((full_ordinal / width_) % 2) ^ color) {
+      ++full_ordinal;
    }
-   return { full_ordinal % width_, full_ordinal / width_ };
+   Cell cell(full_ordinal % width_, full_ordinal / width_);
+   assert(cell.color() == color);
+   return cell;
 }
 
 bool Board::out_of_bounds(const Cell& cell) const noexcept

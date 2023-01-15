@@ -45,7 +45,8 @@ struct Cell
    int y;
 
    Cell(int x_, int y_) noexcept;
-
+   Color color() const noexcept;
+   
    // All diagonally adjacent cells -- even if they're off the board.
    Cells neighbors() const;
 };
@@ -110,5 +111,11 @@ std::vector<std::vector<int>> generate_combos(int n, int k);
 inline Cell::Cell(int x_, int y_) noexcept
 : x(x_), y(y_)
 { }
+
+inline Color Cell::color() const noexcept
+{
+   // For black squares, the row and column parity are the same.
+   return  ((x % 2) == (y % 2)) ? BLACK : WHITE;
+}
 
 #endif /* Board_h */
