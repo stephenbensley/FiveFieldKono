@@ -57,6 +57,13 @@ int Node::distance() const noexcept
    return black().distance + white().distance;
 }
 
+bool Node::operator==(const Node& rhs) const noexcept
+{
+   return (player() == rhs.player()) &&
+          (black_ == rhs.black_) &&
+          (white_ == rhs.white_);
+}
+
 const ColorNode::Player& Node::black() const noexcept
 {
    return black_->player[player()];

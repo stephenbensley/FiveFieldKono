@@ -24,6 +24,8 @@ public:
    int size() const noexcept;
    // Densely-packed integer [0,N) that uniquely identifies the node.
    int index(const Node& node) const noexcept;
+   // Returns the node at the given index.
+   Node operator[](int index) const;
 
 private:
    ColorGraph black_;

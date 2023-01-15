@@ -28,3 +28,18 @@ int Graph::index(const Node& node) const noexcept
    auto [b_idx, w_idx] = node.indices();
    return b_idx * white_.size() + w_idx;
 }
+
+Node Graph::operator[](int index) const
+{
+   assert(index >= 0);
+   assert(index < size());
+
+   auto black = black_[index / white_.size()];
+   auto white = white_[index % white_.size()];
+
+   auto parity = (black->parity() + white->parity()) % num_players;
+   auto player = (parity == start().parity()) ? 0 : 1;
+
+   return Node(player, black, white);
+}
+

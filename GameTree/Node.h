@@ -29,6 +29,11 @@ public:
    // Number of moves it would take the current player to put all his pieces
    // on the goal if the other player doesn't interfere.
    int distance() const noexcept;
+   // The parity changes whenever a move is made. The parity of the node is
+   // useful for determining whose turn it is.
+   int parity() const noexcept;
+
+   bool operator==(const Node& rhs) const noexcept;
 
 private:
    const ColorNode::Player& black() const noexcept;
@@ -45,6 +50,11 @@ private:
 inline int Node::player() const noexcept
 {
    return player_;
+}
+
+inline int Node::parity() const noexcept
+{
+   return (black_->parity() + white_->parity()) % num_players;
 }
 
 inline std::pair<uint16_t, uint16_t> Node::indices() const noexcept

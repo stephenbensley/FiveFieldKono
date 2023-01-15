@@ -27,3 +27,11 @@ TEST_CASE("Graph::start")
    CHECK(start.moves()[0].player() == 1);
    CHECK(start.distance() == 24);
 }
+
+TEST_CASE("Graph::index")
+{
+   Graph graph({5,5}, 0b10001'11111);
+   auto start_a = graph.start();
+   auto start_b = graph[graph.index(start_a)];
+   CHECK(start_a == start_b);
+}

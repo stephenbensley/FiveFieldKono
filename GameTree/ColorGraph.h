@@ -42,6 +42,9 @@ struct ColorNode {
    uint16_t index;
    // Each player's state for the node.
    Player player[num_players];
+   // The parity changes whenever a move is made. The parity of the node is
+   // useful for determining whose turn it is.
+   int parity() const noexcept;
 };
 
 // Represents the game graph for a given color
@@ -58,6 +61,8 @@ public:
    const ColorNode* start() const noexcept;
    // Number of nodes in the graph.
    int size() const noexcept;
+   // Returns the node at the given index.
+   const ColorNode* operator[](int index) const noexcept;
 
 private:
    // Used to store intermediate state about a position during graph
@@ -121,6 +126,11 @@ private:
    const ColorNode* start_ = nullptr;
 };
 
+inline int ColorNode::parity() const noexcept
+{
+   return (player[0].distance + player[1].distance) % num_players;
+}
+
 inline const ColorNode* ColorGraph::start() const noexcept
 {
    assert(start_ != nullptr);
@@ -130,6 +140,13 @@ inline const ColorNode* ColorGraph::start() const noexcept
 inline int ColorGraph::size() const noexcept
 {
    return static_cast<int>(nodes_.size());
+}
+
+inline const ColorNode* ColorGraph::operator[](int index) const noexcept
+{
+   assert(index >= 0);
+   assert(index < size());
+   return &nodes_[index];
 }
 
 inline bool is_valid_player(int player) noexcept
