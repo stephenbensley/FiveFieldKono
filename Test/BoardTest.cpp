@@ -81,6 +81,8 @@ TEST_CASE("distance(Cells")
 
 TEST_CASE("Board::num_cells")
 {
+   CHECK(Board(3,4).num_cells() == 12);
+
    // Even number of cells.
    CHECK(Board(3,4).num_cells(BLACK) == 6);
    CHECK(Board(3,4).num_cells(WHITE) == 6);
@@ -98,7 +100,8 @@ TEST_CASE("Board::ordinal <--> Board::cell")
       for (auto x = 0; x < 3; ++x) {
          for (auto y = 0; y < 3; ++y) {
             Cell c(x, y);
-            CHECK(board.cell(c.color(), board.ordinal(c)) == c);
+            CHECK(board.cell(board.ordinal(c)) == c);
+            CHECK(board.cell(c.color(), board.color_ordinal(c)) == c);
          }
       }
    }
@@ -109,7 +112,8 @@ TEST_CASE("Board::ordinal <--> Board::cell")
       for (auto x = 0; x < 4; ++x) {
          for (auto y = 0; y < 4; ++y) {
             Cell c(x, y);
-            CHECK(board.cell(c.color(), board.ordinal(c)) == c);
+            CHECK(board.cell(board.ordinal(c)) == c);
+            CHECK(board.cell(c.color(), board.color_ordinal(c)) == c);
          }
       }
    }
@@ -142,10 +146,16 @@ TEST_CASE("Board::bitboard <--> Board::cells")
    Board board(5, 5);
 
    Cells black = {{1,3}, {3,1}, {3,3}};
-   CHECK(black == board.cells(BLACK, board.bitboard(black)));
+   CHECK(black == board.cells(board.bitboard(black)));
+   CHECK(black == board.cells(BLACK, board.color_bitboard(black)));
 
    Cells white = {{1,2}, {4,1}, {3,0}};
-   CHECK(white == board.cells(WHITE, board.bitboard(white)));
+   CHECK(white == board.cells(board.bitboard(white)));
+   CHECK(white == board.cells(WHITE, board.color_bitboard(white)));
+
+   Cells both(black);
+   both.insert(both.end(), white.begin(), white.end());
+   CHECK(both == board.cells(board.bitboard(both)));
 }
 
 TEST_CASE("Board::reflect_x")
@@ -177,7 +187,7 @@ TEST_CASE("Board::moves")
       auto to = board.moves(from);
       CHECK(to.size() == sizeof(expected)/sizeof(Cells));
       for (auto cells : expected) {
-         CHECK(contains(to, board.bitboard(cells)));
+         CHECK(contains(to, board.color_bitboard(cells)));
       }
    }
 
@@ -192,7 +202,7 @@ TEST_CASE("Board::moves")
       auto to = board.moves(from);
       CHECK(to.size() == sizeof(expected)/sizeof(Cells));
       for (auto cells : expected) {
-         CHECK(contains(to, board.bitboard(cells)));
+         CHECK(contains(to, board.color_bitboard(cells)));
       }
    }
 }

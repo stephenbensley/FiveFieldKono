@@ -20,7 +20,7 @@ ColorGraph::ColorGraph(const Board& board,
    auto goal1_bits = start0;
    auto goal1_cells = board.cells(color, goal1_bits);
    auto goal0_cells = board.reflect_y(goal1_cells);
-   auto goal0_bits = board.bitboard(goal0_cells);
+   auto goal0_bits = board.color_bitboard(goal0_cells);
    assert((goal0_bits & goal1_bits) == 0);
 
    auto positions = build_positions(board, color, goal0_cells, goal1_cells);
@@ -47,8 +47,8 @@ ColorGraph::Positions ColorGraph::build_positions(const Board& board,
       }
       // Add the new Position.
       result.push_back({
-         board.bitboard(cells),
-         board.bitboard(board.reflect_x(cells)),
+         board.color_bitboard(cells),
+         board.color_bitboard(board.reflect_x(cells)),
          { static_cast<short>(distance(cells, goal0)),
            static_cast<short>(distance(cells, goal1)) },
          board.moves(cells)

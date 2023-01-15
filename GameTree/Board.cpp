@@ -102,19 +102,39 @@ Board::Board(int width, int height) noexcept
    assert(width_ * height_ <= max_cells);
 }
 
+int Board::num_cells() const noexcept
+{
+   return width_ * height_;
+}
+
 int Board::num_cells(Color color) const noexcept
 {
    // If the board has an odd number of cells, the extra cell goes to BLACK.
-   return ((width_ * height_) + (1 - color)) / 2;
+   return (num_cells() + (1 - color)) / 2;
 }
 
 int Board::ordinal(const Cell& cell) const noexcept
 {
-   return (cell.x + cell.y * width_) / num_colors;
+   return cell.x + cell.y * width_;
+}
+
+Cell Board::cell(int ordinal) const noexcept
+{
+   assert(ordinal >= 0);
+   assert(ordinal < num_cells());
+   return { ordinal % width_, ordinal / width_};
+}
+
+int Board::color_ordinal(const Cell& cell) const noexcept
+{
+   return ordinal(cell) / num_colors;
 }
 
 Cell Board::cell(Color color, int ordinal) const noexcept
 {
+   assert(ordinal >= 0);
+   assert(ordinal < num_cells(color));
+
    auto full_ordinal = ordinal * 2;
    // For odd-width boards, the white squares are always offset by one.
    if ((width_ % 2) != 0) {
@@ -123,9 +143,10 @@ Cell Board::cell(Color color, int ordinal) const noexcept
    } else if (((full_ordinal / width_) % 2) ^ color) {
       ++full_ordinal;
    }
-   Cell cell(full_ordinal % width_, full_ordinal / width_);
-   assert(cell.color() == color);
-   return cell;
+
+   Cell result = cell(full_ordinal);
+   assert(result.color() == color);
+   return result;
 }
 
 bool Board::out_of_bounds(const Cell& cell) const noexcept
@@ -143,11 +164,31 @@ Cells Board::erase_out_of_bounds(const Cells& cells) const
    return result;
 }
 
-ColorBitBoard Board::bitboard(const Cells& cells) const noexcept
+BitBoard Board::bitboard(const Cells& cells) const noexcept
 {
-   auto result = 0;
+   BitBoard result = 0;
    for (auto cell : cells) {
       result |= (1 << ordinal(cell));
+   }
+   return result;
+}
+
+Cells Board::cells(BitBoard bits) const
+{
+   Cells result;
+   for (auto i = 0; i < num_cells(); ++i) {
+      if (bits & (1 << i)) {
+         result.push_back(cell(i));
+      }
+   }
+   return result;
+}
+
+ColorBitBoard Board::color_bitboard(const Cells& cells) const noexcept
+{
+   ColorBitBoard result = 0;
+   for (auto cell : cells) {
+      result |= (1 << color_ordinal(cell));
    }
    return result;
 }
@@ -193,12 +234,12 @@ Cells Board::reflect_y(const Cells& cells) const
 
 ColorBitBoard Board::reflect_x(Color color, ColorBitBoard bits) const
 {
-   return bitboard(reflect_x(cells(color, bits)));
+   return color_bitboard(reflect_x(cells(color, bits)));
 }
 
 ColorBitBoard Board::reflect_y(Color color, ColorBitBoard bits) const
 {
-   return bitboard(reflect_y(cells(color, bits)));
+   return color_bitboard(reflect_y(cells(color, bits)));
 }
 
 ColorBitBoards Board::moves(const Cells& from) const
@@ -212,7 +253,7 @@ ColorBitBoards Board::moves(const Cells& from) const
       for (auto neighbor : neighbors) {
          if (!contains(from, neighbor)) {
             to[i] = neighbor;
-            result.push_back(bitboard(to));
+            result.push_back(color_bitboard(to));
           }
       }
    }

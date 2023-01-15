@@ -23,16 +23,18 @@ enum Color
 };
 constexpr int num_colors = 2;
 
-// We use bit fields to store the location of the pieces. There is one field for
-// each (player, color) pair.
+// We use bit fields to store the location of the pieces. BitBoard represents
+// represents all the pieces of one player.
+using BitBoard = uint32_t;
+// Since we're using a uint32_t for BitBoard, the board can't have more than
+// 32 cells.
+constexpr int max_cells = 32;
+
+// Represents pieces of a single color (white or black).
 using ColorBitBoard = uint16_t;
 using ColorBitBoards = std::vector<ColorBitBoard>;
 
 bool contains(const ColorBitBoards& boards, ColorBitBoard board) noexcept;
-
-// Contains interleaved black & white ColorBitBoards.
-using BitBoard = uint32_t;
-constexpr int max_cells = 32;
 
 class Cell;
 using Cells = std::vector<Cell>;
@@ -68,22 +70,29 @@ class Board
 public:
    Board(int width, int height) noexcept;
 
+   int num_cells() const noexcept;
    int num_cells(Color color) const noexcept;
 
    // Ordinals are zero-indexed starting at the lower left and increasing first
-   // horizontally and then vertically. Ordinals are incremented separately
-   // for each color in order to keep the ColorBitBoards densley packed. For
-   // example, a 3x3 board looks like this:
+   // horizontally and then vertically.
+   int ordinal(const Cell& cell) const noexcept;
+   Cell cell(int ordinal) const noexcept;
+
+   // Per-color ordinals are incremented separately for each color in order to
+   // keep the ColorBitBoards densley packed. For example, a 3x3 board looks
+   // like this:
    //    3 3 4
    //    1 2 2
    //    0 0 1
-   int ordinal(const Cell& cell) const noexcept;
+   int color_ordinal(const Cell& cell) const noexcept;
    Cell cell(Color color, int ordinal) const noexcept;
 
    bool out_of_bounds(const Cell& cell) const noexcept;
    Cells erase_out_of_bounds(const Cells& cells) const;
 
-   ColorBitBoard bitboard(const Cells& cells) const noexcept;
+   BitBoard bitboard(const Cells& cells) const noexcept;
+   Cells cells(BitBoard bits) const;
+   ColorBitBoard color_bitboard(const Cells& cells) const noexcept;
    Cells cells(Color color, ColorBitBoard bits) const;
 
    Cell reflect_x(const Cell& cell) const noexcept;
