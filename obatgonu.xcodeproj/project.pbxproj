@@ -11,7 +11,7 @@
 		DC28F501296E4928005FDC40 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F500296E4928005FDC40 /* Board.cpp */; };
 		DC28F504296F7D80005FDC40 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F503296F7D80005FDC40 /* Graph.cpp */; };
 		DC28F512296F970B005FDC40 /* obatgonu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F506296F96EE005FDC40 /* obatgonu.cpp */; };
-		DC28F514296F9760005FDC40 /* libGameTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libGameTree.a */; };
+		DC28F514296F9760005FDC40 /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libEngine.a */; };
 		DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51CE297214600002DC6C /* BoardTest.cpp */; };
 		DCAB51D629734F2A0002DC6C /* ColorGraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */; };
 		DCAB51D829736A1E0002DC6C /* GraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D729736A1E0002DC6C /* GraphTest.cpp */; };
@@ -20,7 +20,7 @@
 		DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE83A7296B666900A871AE /* MiniMax.cpp */; };
 		DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834602971D59000DF81FD /* ColorGraph.cpp */; };
 		DCF834652971F31F00DF81FD /* MiniMaxTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */; };
-		DCF834662971F40700DF81FD /* libGameTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libGameTree.a */; };
+		DCF834662971F40700DF81FD /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libEngine.a */; };
 		DCF8346A2971F42500DF81FD /* RepetitionTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834692971F42400DF81FD /* RepetitionTable.cpp */; };
 		DCF8346C2971F64D00DF81FD /* TranspositionTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */; };
 /* End PBXBuildFile section */
@@ -75,7 +75,7 @@
 		DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColorGraphTest.cpp; sourceTree = "<group>"; };
 		DCAB51D729736A1E0002DC6C /* GraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GraphTest.cpp; sourceTree = "<group>"; };
 		DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RepetitionTableTest.cpp; sourceTree = "<group>"; };
-		DCEE8388296B373400A871AE /* libGameTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGameTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCEE8388296B373400A871AE /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE8397296B42D100A871AE /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		DCEE839C296B42FA00A871AE /* run_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE839E296B42FA00A871AE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC28F514296F9760005FDC40 /* libGameTree.a in Frameworks */,
+				DC28F514296F9760005FDC40 /* libEngine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCF834662971F40700DF81FD /* libGameTree.a in Frameworks */,
+				DCF834662971F40700DF81FD /* libEngine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 			children = (
 				DC28F505296F96C2005FDC40 /* CLI */,
 				DCEE8396296B41C500A871AE /* External */,
-				DCEE8389296B373400A871AE /* GameTree */,
+				DCEE8389296B373400A871AE /* Engine */,
 				DCEE839D296B42FA00A871AE /* Test */,
 				DCEE8377296B370C00A871AE /* Products */,
 				DC28F513296F9760005FDC40 /* Frameworks */,
@@ -148,14 +148,14 @@
 		DCEE8377296B370C00A871AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DCEE8388296B373400A871AE /* libGameTree.a */,
+				DCEE8388296B373400A871AE /* libEngine.a */,
 				DCEE839C296B42FA00A871AE /* run_tests */,
 				DC28F50B296F9700005FDC40 /* obatgonu */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DCEE8389296B373400A871AE /* GameTree */ = {
+		DCEE8389296B373400A871AE /* Engine */ = {
 			isa = PBXGroup;
 			children = (
 				DC28F500296E4928005FDC40 /* Board.cpp */,
@@ -173,7 +173,7 @@
 				DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */,
 				DCEE83AA296B693200A871AE /* TranspositionTable.h */,
 			);
-			path = GameTree;
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		DCEE8396296B41C500A871AE /* External */ = {
@@ -228,9 +228,9 @@
 			productReference = DC28F50B296F9700005FDC40 /* obatgonu */;
 			productType = "com.apple.product-type.tool";
 		};
-		DCEE8387296B373400A871AE /* GameTree */ = {
+		DCEE8387296B373400A871AE /* Engine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCEE8390296B373400A871AE /* Build configuration list for PBXNativeTarget "GameTree" */;
+			buildConfigurationList = DCEE8390296B373400A871AE /* Build configuration list for PBXNativeTarget "Engine" */;
 			buildPhases = (
 				DCEE8384296B373400A871AE /* Headers */,
 				DCEE8385296B373400A871AE /* Sources */,
@@ -240,9 +240,9 @@
 			);
 			dependencies = (
 			);
-			name = GameTree;
+			name = Engine;
 			productName = GameTree;
-			productReference = DCEE8388296B373400A871AE /* libGameTree.a */;
+			productReference = DCEE8388296B373400A871AE /* libEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DCEE839B296B42FA00A871AE /* run_tests */ = {
@@ -296,7 +296,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DCEE8387296B373400A871AE /* GameTree */,
+				DCEE8387296B373400A871AE /* Engine */,
 				DCEE839B296B42FA00A871AE /* run_tests */,
 				DC28F50A296F9700005FDC40 /* obatgonu */,
 			);
@@ -344,12 +344,12 @@
 /* Begin PBXTargetDependency section */
 		DC28F516296F9760005FDC40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DCEE8387296B373400A871AE /* GameTree */;
+			target = DCEE8387296B373400A871AE /* Engine */;
 			targetProxy = DC28F515296F9760005FDC40 /* PBXContainerItemProxy */;
 		};
 		DCF834682971F40700DF81FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DCEE8387296B373400A871AE /* GameTree */;
+			target = DCEE8387296B373400A871AE /* Engine */;
 			targetProxy = DCF834672971F40700DF81FD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -551,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCEE8390296B373400A871AE /* Build configuration list for PBXNativeTarget "GameTree" */ = {
+		DCEE8390296B373400A871AE /* Build configuration list for PBXNativeTarget "Engine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCEE8391296B373400A871AE /* Debug */,

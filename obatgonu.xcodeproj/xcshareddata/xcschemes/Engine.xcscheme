@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCEE8387296B373400A871AE"
-               BuildableName = "libGameTree.a"
-               BlueprintName = "GameTree"
+               BuildableName = "libEngine.a"
+               BlueprintName = "Engine"
                ReferencedContainer = "container:obatgonu.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCEE8387296B373400A871AE"
-            BuildableName = "libGameTree.a"
-            BlueprintName = "GameTree"
+            BuildableName = "libEngine.a"
+            BlueprintName = "Engine"
             ReferencedContainer = "container:obatgonu.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
