@@ -1,3 +1,10 @@
+//
+// Copyright 2023 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
+//
+
 #include "TranspositionTable.h"
 #include "Graph.h"
 
@@ -18,8 +25,6 @@ std::optional<int> TranspositionTable::find(const Node& node) const noexcept
 
 void TranspositionTable::insert(const Node& node, int value) noexcept
 {
-   if (value != 0) {
-      value_[graph_.index(node)] = value;
-   }
+   value_[graph_.index(node)] = value;
 }
 
