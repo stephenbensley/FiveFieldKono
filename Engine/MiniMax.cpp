@@ -1,3 +1,10 @@
+//
+// Copyright 2023 Stephen E. Bensley
+//
+// This file is licensed under the MIT License. You may obtain a copy of the
+// license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
+//
+
 #include "MiniMax.h"
 #include "Node.h"
 #include <algorithm>
@@ -38,7 +45,6 @@ int MiniMax::negamax(const Node& node, int depth, int color)
    });
 
    auto value = std::numeric_limits<int>::min();
-
    for (auto move : node.moves()) {
       value = std::max(value, -negamax(move, depth - 1, -color));
       if (value == color) {
