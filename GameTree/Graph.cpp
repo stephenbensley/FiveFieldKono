@@ -8,7 +8,9 @@
 #include "Graph.h"
 
 Graph::Graph(const Board& board, BitBoard start0)
-: black_(board, BLACK, board.color_bitboard(BLACK, start0)),
+: board_(board),
+  num_pieces_(count_set_bits(start0)),
+  black_(board, BLACK, board.color_bitboard(BLACK, start0)),
   white_(board, WHITE, board.color_bitboard(WHITE, start0))
 { }
 
@@ -16,6 +18,23 @@ Node Graph::start() const noexcept
 {
    // Player 0 always goes first.
    return { 0, black_.start(), white_.start() };
+}
+
+Node Graph::node(BitBoard p0, BitBoard p1) const
+{
+   assert((p0 & p1) == 0);
+   assert(count_set_bits(p0) == num_pieces_);
+   assert(count_set_bits(p1) == num_pieces_);
+
+   auto p0_black = board_.color_bitboard(BLACK, p0);
+   auto p0_white = board_.color_bitboard(WHITE, p0);
+   auto p1_black = board_.color_bitboard(BLACK, p1);
+   auto p1_white = board_.color_bitboard(WHITE, p1);
+
+   auto black = black_.node(p0_black, p1_black);
+   auto white = white_.node(p0_white, p1_white);
+   return Node(player(black, white), black, white);
+
 }
 
 int Graph::size() const noexcept
@@ -29,17 +48,18 @@ int Graph::index(const Node& node) const noexcept
    return b_idx * white_.size() + w_idx;
 }
 
-Node Graph::operator[](int index) const
+Node Graph::operator[](int index) const noexcept
 {
    assert(index >= 0);
    assert(index < size());
 
    auto black = black_[index / white_.size()];
    auto white = white_[index % white_.size()];
-
-   auto parity = (black->parity() + white->parity()) % num_players;
-   auto player = (parity == start().parity()) ? 0 : 1;
-
-   return Node(player, black, white);
+   return Node(player(black, white), black, white);
 }
 
+int Graph::player(const ColorNode* black, const ColorNode* white) const noexcept
+{
+   auto parity = (black->parity() + white->parity()) % num_players;
+   return (parity == start().parity()) ? 0 : 1;
+}

@@ -21,6 +21,12 @@ public:
    std::pair<uint16_t, uint16_t> indices() const noexcept;
    // Return true if the game is over once this node is reached.
    bool is_terminal() const noexcept;
+   // Returns true if the current player has no moves available. This is much
+   // faster than moves().empty().
+   bool no_moves() const noexcept;
+   // Returns true if the specified player has won the game by reaching and
+   // filling their goal.
+   bool is_winner(int idx) const noexcept;
    // The value of a node iff the node is terminal. Positive values represent
    // an advantage for player 0. Negative values an advantage for player 1.
    int value() const noexcept;
@@ -38,9 +44,6 @@ public:
 private:
    const ColorNode::Player& black() const noexcept;
    const ColorNode::Player& white() const noexcept;
-
-   bool no_moves() const noexcept;
-   bool is_winner(int idx) const noexcept;
 
    int player_;
    const ColorNode* black_;

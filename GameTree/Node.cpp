@@ -22,6 +22,19 @@ bool Node::is_terminal() const noexcept
    return no_moves() || is_winner(0) || is_winner(1);
 }
 
+bool Node::no_moves() const noexcept
+{
+   return black().moves.empty() && white().moves.empty();
+}
+
+bool Node::is_winner(int idx) const noexcept
+{
+   // Player's goal must be full and at least one of the pieces in the goal
+   // must belong to the player.
+   return black().goal_full && white().goal_full &&
+         (black().goal_reached || white().goal_reached);
+}
+
 int Node::value() const noexcept
 {
    assert(is_terminal());
@@ -73,17 +86,3 @@ const ColorNode::Player& Node::white() const noexcept
 {
    return white_->player[player()];
 }
-
-bool Node::no_moves() const noexcept
-{
-   return black().moves.empty() && white().moves.empty();
-}
-
-bool Node::is_winner(int idx) const noexcept
-{
-   // Player's goal must be full and at least one of the pieces in the goal
-   // must belong to the player.
-   return black().goal_full && white().goal_full &&
-         (black().goal_reached || white().goal_reached);
-}
-

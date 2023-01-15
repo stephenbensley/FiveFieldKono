@@ -59,6 +59,8 @@ public:
 
    // Starting position of the game.
    const ColorNode* start() const noexcept;
+   // Returns any node based on the piece positions.
+   const ColorNode* node(ColorBitBoard p0, ColorBitBoard p1) const noexcept;
    // Number of nodes in the graph.
    int size() const noexcept;
    // Returns the node at the given index.
@@ -90,8 +92,7 @@ private:
                                                  const Position& p1) noexcept;
    // Returns true if the combination of the two positions can occur during
    // game play and isn't simply a reflection of another position.
-   static bool is_valid_combo(const Position& p0,
-                              const Position& p1) noexcept;
+   bool is_valid_combo(const Position& p0, const Position& p1) noexcept;
    // Populates all the fields in a ColorNode struct except the moves.
    static ColorNode build_node(uint16_t index,
                                const Position& p0,
@@ -117,6 +118,8 @@ private:
    // Iterates through all the ColorNodes and initializes there moves field.
    void populate_moves(const Positions& positions);
 
+   // Number of pieces for each player.
+   int num_pieces_;
    // All the nodes in the graph in index order, so a ColorNode's index
    // represents its position in the vector.
    std::vector<ColorNode> nodes_;
@@ -125,6 +128,8 @@ private:
    // Starting node of the game.
    const ColorNode* start_ = nullptr;
 };
+
+int count_set_bits(uint32_t src) noexcept;
 
 inline int ColorNode::parity() const noexcept
 {

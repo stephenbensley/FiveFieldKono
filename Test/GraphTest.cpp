@@ -8,6 +8,20 @@
 #include "catch.hpp"
 #include "Graph.h"
 
+TEST_CASE("Graph::node")
+{
+   // XXOOO
+   // O---X
+   // -X-OO
+   // -----
+   // XO-XX
+   Graph graph({5,5}, 0b10001'11111);
+   auto node = graph.node(0b11000'00001'01000'00000'10011,
+                          0b00111'10000'00011'00000'01000);
+   CHECK(node.is_terminal());
+   CHECK(node.is_winner(0));
+}
+
 TEST_CASE("Graph::size")
 {
    // See ColorGraphTest for details on where 16 & 7 came from.

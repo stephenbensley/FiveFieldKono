@@ -21,6 +21,7 @@ bool contains(const ColorNodes& nodes, const ColorNode* node) noexcept
 ColorGraph::ColorGraph(const Board& board,
                        Color color,
                        ColorBitBoard start0)
+: num_pieces_(count_set_bits(start0))
 {
    auto goal1_bits = start0;
    auto goal1_cells = board.cells(color, goal1_bits);
@@ -31,7 +32,19 @@ ColorGraph::ColorGraph(const Board& board,
    auto positions = build_positions(board, color, goal0_cells, goal1_cells);
    build_nodes(positions, goal0_bits, goal1_bits);
    populate_moves(positions);
-   start_ = find(goal1_bits, goal0_bits);
+   start_ = node(goal1_bits, goal0_bits);
+}
+
+const ColorNode* ColorGraph::node(ColorBitBoard p0,
+                                  ColorBitBoard p1) const noexcept
+{
+   assert((p0 & p1) == 0);
+   assert(count_set_bits(p0) == num_pieces_);
+   assert(count_set_bits(p1) == num_pieces_);
+
+   auto i = index_.find(concat(p0, p1));
+   assert (i != index_.end());
+   return &nodes_[i->second];
 }
 
 ColorGraph::Positions ColorGraph::build_positions(const Board& board,
@@ -68,9 +81,11 @@ std::pair<uint32_t, uint32_t> ColorGraph::get_keys(const Position& p0,
    return { concat(p0.pieces, p1.pieces), concat(p0.reflected, p1.reflected) };
 }
 
-bool ColorGraph::is_valid_combo(const Position& p0,
-                                const Position& p1) noexcept
+bool ColorGraph::is_valid_combo(const Position& p0, const Position& p1) noexcept
 {
+   assert(count_set_bits(p0.pieces) == num_pieces_);
+   assert(count_set_bits(p1.pieces) == num_pieces_);
+   
    // Pieces must not overlap.
    if ((p0.pieces & p1.pieces) != 0) {
       return false;
@@ -185,4 +200,13 @@ void ColorGraph::populate_moves(const Positions& positions)
          }
       }
    }
+}
+
+int count_set_bits(uint32_t src) noexcept
+{
+   // From: https://graphics.stanford.edu/~seander/bithacks.html
+
+   src = src - ((src >> 1) & 0x55555555);
+   src = (src & 0x33333333) + ((src >> 2) & 0x33333333);
+   return ((src + (src >> 4) & 0xF0F0F0F) * 0x1010101) >> 24;
 }

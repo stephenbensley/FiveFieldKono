@@ -20,17 +20,23 @@ public:
    Graph(const Board& board, BitBoard start0);
    // Starting position of the game.
    Node start() const noexcept;
+   // Returns any node based on the piece positions.
+   Node node(BitBoard p0, BitBoard p1) const;
    // Number of nodes in the graph.
    int size() const noexcept;
    // Densely-packed integer [0,N) that uniquely identifies the node.
    int index(const Node& node) const noexcept;
    // Returns the node at the given index.
-   Node operator[](int index) const;
+   Node operator[](int index) const noexcept;
 
 private:
+   Board board_;
+   int num_pieces_;
    ColorGraph black_;
    ColorGraph white_;
 
+   // Deduces the next player based on the ColorNodes.
+   int player(const ColorNode* black, const ColorNode* white) const noexcept;
 };
 
 #endif /* Graph_h */
