@@ -6,7 +6,12 @@
 //
 
 #include "ColorGraph.h"
-#include "BitOps.h"
+
+uint32_t concat(uint16_t upper, uint16_t lower) noexcept
+{
+   return static_cast<uint32_t>(upper) << 16 |
+          static_cast<uint32_t>(lower);
+}
 
 bool contains(const ColorNodes& nodes, const ColorNode* node) noexcept
 {

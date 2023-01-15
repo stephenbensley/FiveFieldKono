@@ -6,11 +6,10 @@
 //
 
 #include "Graph.h"
-#include "BitOps.h"
 
 Graph::Graph(const Board& board, BitBoard start0)
-: black_(board, BLACK, even_bits(start0)),
-  white_(board, WHITE, odd_bits(start0))
+: black_(board, BLACK, board.color_bitboard(BLACK, start0)),
+  white_(board, WHITE, board.color_bitboard(WHITE, start0))
 { }
 
 Node Graph::start() const noexcept

@@ -95,6 +95,8 @@ public:
    ColorBitBoard color_bitboard(const Cells& cells) const noexcept;
    Cells cells(Color color, ColorBitBoard bits) const;
 
+   ColorBitBoard color_bitboard(Color color, BitBoard bits) const;
+   
    Cell reflect_x(const Cell& cell) const noexcept;
    Cell reflect_y(const Cell& cell) const noexcept;
 

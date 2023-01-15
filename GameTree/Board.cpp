@@ -204,6 +204,17 @@ Cells Board::cells(Color color, ColorBitBoard bits) const
    return result;
 }
 
+ColorBitBoard Board::color_bitboard(Color color, BitBoard bits) const
+{
+   Cells one_color;
+   for (auto cell : cells(bits)) {
+      if (cell.color() == color) {
+         one_color.push_back(cell);
+      }
+   }
+   return color_bitboard(one_color);
+}
+
 Cell Board::reflect_x(const Cell& cell) const noexcept
 {
    return { width_ - 1 - cell.x, cell.y };

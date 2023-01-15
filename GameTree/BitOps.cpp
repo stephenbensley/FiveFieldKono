@@ -5,7 +5,7 @@
 // license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
 //
 
-#include "BitOps.h"
+#include <cstdint>
 
 uint32_t concat(uint16_t upper, uint16_t lower) noexcept
 {

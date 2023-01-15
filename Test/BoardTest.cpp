@@ -146,12 +146,18 @@ TEST_CASE("Board::bitboard <--> Board::cells")
    Board board(5, 5);
 
    Cells black = {{1,3}, {3,1}, {3,3}};
-   CHECK(black == board.cells(board.bitboard(black)));
-   CHECK(black == board.cells(BLACK, board.color_bitboard(black)));
+   auto all_bits = board.bitboard(black);
+   auto color_bits = board.color_bitboard(black);
+   CHECK(black == board.cells(all_bits));
+   CHECK(black == board.cells(BLACK, color_bits));
+   CHECK(color_bits == board.color_bitboard(BLACK, all_bits));
 
    Cells white = {{1,2}, {4,1}, {3,0}};
-   CHECK(white == board.cells(board.bitboard(white)));
-   CHECK(white == board.cells(WHITE, board.color_bitboard(white)));
+   all_bits = board.bitboard(white);
+   color_bits = board.color_bitboard(white);
+   CHECK(white == board.cells(all_bits));
+   CHECK(white == board.cells(WHITE, color_bits));
+   CHECK(color_bits == board.color_bitboard(WHITE, all_bits));
 
    Cells both(black);
    both.insert(both.end(), white.begin(), white.end());
