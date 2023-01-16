@@ -126,7 +126,7 @@ private:
    // Maps keys to indices.
    std::unordered_map<uint32_t, int> index_;
    // Starting node of the game.
-   const ColorNode* start_ = nullptr;
+   int start_index_;
 };
 
 int count_set_bits(uint32_t src) noexcept;
@@ -138,8 +138,7 @@ inline int ColorNode::parity() const noexcept
 
 inline const ColorNode* ColorGraph::start() const noexcept
 {
-   assert(start_ != nullptr);
-   return start_;
+   return operator[](start_index_);
 }
 
 inline int ColorGraph::size() const noexcept

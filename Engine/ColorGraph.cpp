@@ -32,7 +32,7 @@ ColorGraph::ColorGraph(const Board& board,
    auto positions = build_positions(board, color, goal0_cells, goal1_cells);
    build_nodes(positions, goal0_bits, goal1_bits);
    populate_moves(positions);
-   start_ = node(goal1_bits, goal0_bits);
+   start_index_ = index_[concat(goal1_bits, goal0_bits)];
 }
 
 const ColorNode* ColorGraph::node(ColorBitBoard p0,
