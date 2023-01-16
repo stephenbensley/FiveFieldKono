@@ -7,8 +7,9 @@
 
 #include "ToString.h"
 
-std::string to_string(const Board& board,
-                      const GamePosition& pos)
+uint32_t log2(uint32_t x) noexcept;
+
+std::string to_string(const Board& board, const GamePosition& pos)
 {
    constexpr char empty_cell = '-';
    constexpr char p0_cell = 'X';
@@ -31,3 +32,28 @@ std::string to_string(const Board& board,
 
    return result;
 }
+
+std::string to_string(const Board& board,
+                      const BitBoard& from,
+                      const BitBoard& to)
+{
+   auto diff = from ^ to;
+   return to_string(board, log2(diff & from)) +
+          to_string(board, log2(diff & to));
+}
+
+std::string to_string(const Board& board, int ordinal)
+{
+   auto cell = board.cell(ordinal);
+   return { static_cast<char>('a' + cell.x), static_cast<char>('1' + cell.y) };
+}
+
+uint32_t log2(uint32_t x) noexcept
+{
+   uint32_t retval = 0;
+   while (x >>= 1) {
+      ++retval;
+   }
+   return retval;
+}
+

@@ -11,11 +11,12 @@
 #include "Board.h"
 #include <string>
 
-std::string to_string(const Board& board,
-                      const GamePosition& pos);
+std::string to_string(const Board& board, const GamePosition& pos);
 
 std::string to_string(const Board& board,
-                      const GamePosition& from,
-                      const GamePosition& to);
+                      const BitBoard& from,
+                      const BitBoard& to);
+
+std::string to_string(const Board& board, int ordinal);
 
 #endif /* ToString_h */
