@@ -32,7 +32,7 @@ int MiniMax::negamax(const Node& node, int depth, int color)
    }
 
    if (node.is_terminal()) {
-      return node.value();
+      return evaluate(node);
    }
 
    if (!r_table_.try_push(node)) {
@@ -57,3 +57,17 @@ int MiniMax::negamax(const Node& node, int depth, int color)
    return value;
 }
 
+int MiniMax::evaluate(const Node& node) noexcept
+{
+   assert(node.is_terminal());
+   if (node.is_winner(0)) {
+      return +1;
+   }
+   if (node.is_winner(1)) {
+      return -1;
+   }
+   if (node.no_moves()) {
+      return node.player() ? -1 : + 1;
+   }
+   return 0;
+}

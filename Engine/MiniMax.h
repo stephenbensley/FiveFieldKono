@@ -27,6 +27,7 @@ private:
    TranspositionTable t_table_;
 
    int negamax(const Node& node, int depth, int color);
+   static int evaluate(const Node& node) noexcept;
 };
 
 #endif /* MiniMax_h */

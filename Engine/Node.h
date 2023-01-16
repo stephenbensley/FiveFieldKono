@@ -27,9 +27,6 @@ public:
    // Returns true if the specified player has won the game by reaching and
    // filling their goal.
    bool is_winner(int idx) const noexcept;
-   // The value of a node iff the node is terminal. Positive values represent
-   // an advantage for player 0. Negative values an advantage for player 1.
-   int value() const noexcept;
    // Available moves for the current player.
    std::vector<Node> moves() const;
    // Number of moves it would take the current player to put all his pieces

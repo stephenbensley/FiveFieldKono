@@ -35,21 +35,6 @@ bool Node::is_winner(int idx) const noexcept
          (black().goal_reached || white().goal_reached);
 }
 
-int Node::value() const noexcept
-{
-   assert(is_terminal());
-   if (is_winner(0)) {
-      return +1;
-   }
-   if (is_winner(1)) {
-      return -1;
-   }
-   if (no_moves()) {
-      return player() ? -1 : + 1;
-   }
-   return 0;
-}
-
 std::vector<Node> Node::moves() const
 {
    auto next = other_player(player());
