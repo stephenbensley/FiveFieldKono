@@ -5,10 +5,14 @@
 // license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
 //
 
+#include "Graph.h"
+#include "ToString.h"
 #include <iostream>
 
 int main(int argc, char* const argv[])
 {
-   std::cout << "Hello, world!" << std::endl;
+   Board board(5, 5);
+   Graph graph(board, 0b10001'11111);
+   std::cout << to_string(board, graph.start().position(board)) << std::flush;
    return 0;
 }

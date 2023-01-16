@@ -17,6 +17,16 @@ Node::Node(int player, const ColorNode* black, const ColorNode* white) noexcept
    assert(white != nullptr);
 }
 
+GamePosition Node::position(const Board& board) const noexcept
+{
+   auto p0 = board.bitboard(black_->player[0].pieces,
+                            white_->player[0].pieces);
+   auto p1 = board.bitboard(black_->player[1].pieces,
+                            white_->player[1].pieces);
+
+   return { p0, p1 };
+}
+
 bool Node::is_terminal() const noexcept
 {
    return no_moves() || is_winner(0) || is_winner(1);

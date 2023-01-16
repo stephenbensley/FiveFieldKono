@@ -19,6 +19,8 @@ public:
    int player() const noexcept;
    // The indices of the black & white ColorNodes.
    std::pair<uint16_t, uint16_t> indices() const noexcept;
+   // Location of pieces.
+   GamePosition position(const Board& board) const noexcept;
    // Return true if the game is over once this node is reached.
    bool is_terminal() const noexcept;
    // Returns true if the current player has no moves available. This is much
@@ -52,14 +54,14 @@ inline int Node::player() const noexcept
    return player_;
 }
 
-inline int Node::parity() const noexcept
-{
-   return (black_->parity() + white_->parity()) % num_players;
-}
-
 inline std::pair<uint16_t, uint16_t> Node::indices() const noexcept
 {
    return { black_->index, white_->index };
+}
+
+inline int Node::parity() const noexcept
+{
+   return (black_->parity() + white_->parity()) % num_players;
 }
 
 #endif /* Node_h */

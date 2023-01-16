@@ -17,6 +17,8 @@
 		DCAB51D829736A1E0002DC6C /* GraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D729736A1E0002DC6C /* GraphTest.cpp */; };
 		DCAB51DA297495A90002DC6C /* RepetitionTableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */; };
 		DCAB51DC2974970A0002DC6C /* TranspositionTableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51DB2974970A0002DC6C /* TranspositionTableTest.cpp */; };
+		DCAB51DE2975F4590002DC6C /* ToString.h in Headers */ = {isa = PBXBuildFile; fileRef = DCAB51DD2975F4590002DC6C /* ToString.h */; };
+		DCAB51E02975F5040002DC6C /* ToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51DF2975F5040002DC6C /* ToString.cpp */; };
 		DCEE839F296B42FA00A871AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE839E296B42FA00A871AE /* main.cpp */; };
 		DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE83A7296B666900A871AE /* MiniMax.cpp */; };
 		DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834602971D59000DF81FD /* ColorGraph.cpp */; };
@@ -77,6 +79,8 @@
 		DCAB51D729736A1E0002DC6C /* GraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GraphTest.cpp; sourceTree = "<group>"; };
 		DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RepetitionTableTest.cpp; sourceTree = "<group>"; };
 		DCAB51DB2974970A0002DC6C /* TranspositionTableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TranspositionTableTest.cpp; sourceTree = "<group>"; };
+		DCAB51DD2975F4590002DC6C /* ToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToString.h; sourceTree = "<group>"; };
+		DCAB51DF2975F5040002DC6C /* ToString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ToString.cpp; sourceTree = "<group>"; };
 		DCEE8388296B373400A871AE /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE8397296B42D100A871AE /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		DCEE839C296B42FA00A871AE /* run_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run_tests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +178,8 @@
 				DCEE83AB296B6A7000A871AE /* RepetitionTable.h */,
 				DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */,
 				DCEE83AA296B693200A871AE /* TranspositionTable.h */,
+				DCAB51DD2975F4590002DC6C /* ToString.h */,
+				DCAB51DF2975F5040002DC6C /* ToString.cpp */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAB51DE2975F4590002DC6C /* ToString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +333,7 @@
 				DCF8346A2971F42500DF81FD /* RepetitionTable.cpp in Sources */,
 				DC28F4FD296DE52B005FDC40 /* Node.cpp in Sources */,
 				DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */,
+				DCAB51E02975F5040002DC6C /* ToString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

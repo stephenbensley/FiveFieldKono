@@ -11,8 +11,6 @@
 #include "Board.h"
 #include <unordered_map>
 
-constexpr int num_players = 2;
-
 bool is_valid_player(int player) noexcept;
 int other_player(int player) noexcept;
 

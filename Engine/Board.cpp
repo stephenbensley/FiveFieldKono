@@ -204,6 +204,11 @@ Cells Board::cells(Color color, ColorBitBoard bits) const
    return result;
 }
 
+BitBoard Board::bitboard(ColorBitBoard black, ColorBitBoard white) const
+{
+   return bitboard(cells(BLACK, black)) | bitboard(cells(WHITE, white));
+}
+
 ColorBitBoard Board::color_bitboard(Color color, BitBoard bits) const
 {
    Cells one_color;

@@ -8,11 +8,14 @@
 #ifndef Board_h
 #define Board_h
 
+#include <array>
 #include <vector>
 
 // This code is only used for graph generation; it is not in the hot path
 // during search. Therefore, the code has been optimized for readability and
 // simplicity -- not performance.
+
+constexpr int num_players = 2;
 
 // The board is a rectangular checkerboard of black and white cells. The
 // lower left cell is always black.
@@ -26,6 +29,8 @@ constexpr int num_colors = 2;
 // We use bit fields to store the location of the pieces. BitBoard represents
 // represents all the pieces of one player.
 using BitBoard = uint32_t;
+using GamePosition = std::array<BitBoard, num_players>;
+
 // Since we're using a uint32_t for BitBoard, the board can't have more than
 // 32 cells.
 constexpr int max_cells = 32;
@@ -70,6 +75,9 @@ class Board
 public:
    Board(int width, int height) noexcept;
 
+   int width() const noexcept;
+   int height() const noexcept;
+
    int num_cells() const noexcept;
    int num_cells(Color color) const noexcept;
 
@@ -95,6 +103,8 @@ public:
    ColorBitBoard color_bitboard(const Cells& cells) const noexcept;
    Cells cells(Color color, ColorBitBoard bits) const;
 
+   // Swizzle ColorBitBoard <--> BitBoard
+   BitBoard bitboard(ColorBitBoard black, ColorBitBoard white) const;
    ColorBitBoard color_bitboard(Color color, BitBoard bits) const;
    
    Cell reflect_x(const Cell& cell) const noexcept;
@@ -127,6 +137,16 @@ inline Color Cell::color() const noexcept
 {
    // For black squares, the row and column parity are the same.
    return  ((x % 2) == (y % 2)) ? BLACK : WHITE;
+}
+
+inline int Board::width() const noexcept
+{
+   return width_;
+}
+
+inline int Board::height() const noexcept
+{
+   return height_;
 }
 
 #endif /* Board_h */
