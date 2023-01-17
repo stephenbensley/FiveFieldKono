@@ -41,8 +41,8 @@ bool Node::is_winner(int idx) const noexcept
 {
    // Player's goal must be full and at least one of the pieces in the goal
    // must belong to the player.
-   return black().goal_full && white().goal_full &&
-         (black().goal_reached || white().goal_reached);
+   return black_->player[idx].goal_full && white_->player[idx].goal_full &&
+         (black_->player[idx].goal_reached || white_->player[idx].goal_reached);
 }
 
 std::vector<Node> Node::moves() const

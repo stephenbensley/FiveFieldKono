@@ -20,6 +20,7 @@ TEST_CASE("Graph::node")
                           0b00111'10000'00011'00000'01000);
    CHECK(node.is_terminal());
    CHECK(node.is_winner(0));
+   CHECK(!node.is_winner(1));
 }
 
 TEST_CASE("Graph::size")
