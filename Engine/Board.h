@@ -26,18 +26,20 @@ enum Color
 };
 constexpr int num_colors = 2;
 
-// We use bit fields to store the location of the pieces. BitBoard represents
+// Bit fields are used to store the location of the pieces. A BitBoard
 // represents all the pieces of one player.
 using BitBoard = uint32_t;
+using BitBoards = std::vector<BitBoard>;
 using GamePosition = std::array<BitBoard, num_players>;
 
-// Since we're using a uint32_t for BitBoard, the board can't have more than
+// Since BitBoard is a uint32_t, the board can't have more than
 // 32 cells.
 constexpr int max_cells = 32;
 
 // Represents pieces of a single color (white or black).
 using ColorBitBoard = uint16_t;
 using ColorBitBoards = std::vector<ColorBitBoard>;
+using ColorPosition = std::array<ColorBitBoard, num_players>;
 
 bool contains(const ColorBitBoards& boards, ColorBitBoard board) noexcept;
 
@@ -82,7 +84,11 @@ public:
    int num_cells(Color color) const noexcept;
 
    // Ordinals are zero-indexed starting at the lower left and increasing first
-   // horizontally and then vertically.
+   // horizontally and then vertically. For example, a 3x3 board looks
+   // like this:
+   //    6 7 8
+   //    3 4 5
+   //    0 1 2
    int ordinal(const Cell& cell) const noexcept;
    Cell cell(int ordinal) const noexcept;
 
@@ -98,6 +104,8 @@ public:
    bool out_of_bounds(const Cell& cell) const noexcept;
    Cells erase_out_of_bounds(const Cells& cells) const;
 
+   Cells filter(const Cells& cells, Color color) const;
+
    BitBoard bitboard(const Cells& cells) const noexcept;
    Cells cells(BitBoard bits) const;
    ColorBitBoard color_bitboard(const Cells& cells) const noexcept;
@@ -112,9 +120,6 @@ public:
 
    Cells reflect_x(const Cells& cells) const;
    Cells reflect_y(const Cells& cells) const;
-
-   ColorBitBoard reflect_x(Color color, ColorBitBoard bits) const;
-   ColorBitBoard reflect_y(Color color, ColorBitBoard bits) const;
 
    // Returns all legal board positions that can be reached from the given
    // cells in a single move.

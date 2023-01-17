@@ -164,6 +164,17 @@ Cells Board::erase_out_of_bounds(const Cells& cells) const
    return result;
 }
 
+Cells Board::filter(const Cells& cells, Color color) const
+{
+   Cells one_color;
+   for (auto cell : cells) {
+      if (cell.color() == color) {
+         one_color.push_back(cell);
+      }
+   }
+   return one_color;
+}
+
 BitBoard Board::bitboard(const Cells& cells) const noexcept
 {
    BitBoard result = 0;
@@ -211,13 +222,7 @@ BitBoard Board::bitboard(ColorBitBoard black, ColorBitBoard white) const
 
 ColorBitBoard Board::color_bitboard(Color color, BitBoard bits) const
 {
-   Cells one_color;
-   for (auto cell : cells(bits)) {
-      if (cell.color() == color) {
-         one_color.push_back(cell);
-      }
-   }
-   return color_bitboard(one_color);
+   return color_bitboard(filter(cells(bits), color));
 }
 
 Cell Board::reflect_x(const Cell& cell) const noexcept
@@ -246,16 +251,6 @@ Cells Board::reflect_y(const Cells& cells) const
       result.push_back(reflect_y(cell));
    }
    return result;
-}
-
-ColorBitBoard Board::reflect_x(Color color, ColorBitBoard bits) const
-{
-   return color_bitboard(reflect_x(cells(color, bits)));
-}
-
-ColorBitBoard Board::reflect_y(Color color, ColorBitBoard bits) const
-{
-   return color_bitboard(reflect_y(cells(color, bits)));
 }
 
 ColorBitBoards Board::moves(const Cells& from) const
