@@ -15,8 +15,36 @@ MiniMax::MiniMax(const Graph& graph)
   t_table_(graph)
 { }
 
+Node MiniMax::best_move(const Node& node, int depth)
+{
+   // Search the tree. This will guarantee the best move is in the transposition
+   // table.
+   auto value = search(node, depth);
+
+   auto moves = node.moves();
+   std::sort(moves.begin(), moves.end(), [](auto lhs, auto rhs) {
+      return lhs.distance() < rhs.distance();
+   });
+
+   // Find the best move in t_table.
+   for (auto move : node.moves()) {
+      auto cached = t_table_.find(move);
+      auto child_value = cached ? -*cached : 0;
+      if (child_value == value) {
+         return move;
+      }
+    }
+
+   assert(false);
+   return Node();
+
+}
+
 int MiniMax::search(const Node& node, int depth)
 {
+   assert(!node.is_terminal());
+   assert(depth > 0);
+
    auto color = (node.player() ? -1 : +1);
    return negamax(node, depth, color);
 }
@@ -32,7 +60,7 @@ int MiniMax::negamax(const Node& node, int depth, int color)
    }
 
    if (node.is_terminal()) {
-      return evaluate(node);
+      return color * evaluate(node);
    }
 
    if (!r_table_.try_push(node)) {
@@ -47,7 +75,7 @@ int MiniMax::negamax(const Node& node, int depth, int color)
    auto value = std::numeric_limits<int>::min();
    for (auto move : node.moves()) {
       value = std::max(value, -negamax(move, depth - 1, -color));
-      if (value == color) {
+      if (value == +1) {
          break;
       }
    }

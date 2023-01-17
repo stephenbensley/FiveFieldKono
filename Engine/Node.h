@@ -14,6 +14,7 @@
 class Node
 {
 public:
+   Node() = default;
    Node(int player, const ColorNode* black, const ColorNode* white) noexcept;
    // The player with the next move.
    int player() const noexcept;
@@ -44,9 +45,9 @@ private:
    const ColorNode::Player& black() const noexcept;
    const ColorNode::Player& white() const noexcept;
 
-   int player_;
-   const ColorNode* black_;
-   const ColorNode* white_;
+   int player_ = 0;
+   const ColorNode* black_ = nullptr;
+   const ColorNode* white_ = nullptr;
 };
 
 inline int Node::player() const noexcept

@@ -19,7 +19,7 @@ class MiniMax
 {
 public:
    MiniMax(const Graph& graph);
-   
+   Node best_move(const Node& node, int depth);
    int search(const Node& node, int depth);
    
 private:
