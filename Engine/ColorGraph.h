@@ -49,11 +49,7 @@ struct ColorNode {
 class ColorGraph
 {
 public:
-   // start0 is the starting location of player 0's pieces. Player 1's start
-   // position is simply the reflection of this.
-   ColorGraph(const Board& board,
-              Color color,
-              ColorBitBoard start0);
+   ColorGraph(const Board& board, Color color, ColorPosition start);
 
    // Starting position of the game.
    const ColorNode* start() const noexcept;
@@ -73,7 +69,7 @@ private:
       // Location of the pieces reflected horizontally.
       ColorBitBoard reflected;
       // Number of moves to the goal.
-      short distance[num_players];
+      std::array<short, num_players> distance;
       // Valid moves from this position.
       ColorBitBoards moves;
    };

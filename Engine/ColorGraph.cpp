@@ -20,14 +20,17 @@ bool contains(const ColorNodes& nodes, const ColorNode* node) noexcept
 
 ColorGraph::ColorGraph(const Board& board,
                        Color color,
-                       ColorBitBoard start0)
-: num_pieces_(count_set_bits(start0))
+                       ColorPosition start)
+: num_pieces_(count_set_bits(start[0]))
 {
-   auto goal1_bits = start0;
+
+   auto goal0_bits = start[1];
+   auto goal0_cells = board.cells(color, goal0_bits);
+   auto goal1_bits = start[0];
    auto goal1_cells = board.cells(color, goal1_bits);
-   auto goal0_cells = board.reflect_y(goal1_cells);
-   auto goal0_bits = board.color_bitboard(goal0_cells);
-   assert((goal0_bits & goal1_bits) == 0);
+
+   assert(goal0_cells.size() == num_pieces_);
+   assert(goal1_cells.size() == num_pieces_);
 
    auto positions = build_positions(board, color, goal0_cells, goal1_cells);
    build_nodes(positions, goal0_bits, goal1_bits);
@@ -63,10 +66,18 @@ ColorGraph::Positions ColorGraph::build_positions(const Board& board,
       for (auto index : combo) {
          cells.push_back(board.cell(color, index));
       }
+
+      auto pieces = board.color_bitboard(cells);
+      auto reflected = pieces;
+      // Can only reflect odd-width boards.
+      if (board.width() % 2) {
+         reflected = board.color_bitboard(board.reflect_x(cells));
+      }
+      
       // Add the new Position.
       result.push_back({
-         board.color_bitboard(cells),
-         board.color_bitboard(board.reflect_x(cells)),
+         pieces,
+         reflected,
          { static_cast<short>(distance(cells, goal0)),
            static_cast<short>(distance(cells, goal1)) },
          board.moves(cells)

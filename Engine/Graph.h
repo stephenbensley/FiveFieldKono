@@ -30,13 +30,16 @@ public:
    Node operator[](int index) const noexcept;
 
 private:
+   // Deduces the next player based on the ColorNodes.
+   int player(const ColorNode* black, const ColorNode* white) const noexcept;
+   // Helper function to compute the per-color start positions.
+   static ColorPosition get_start_positions(const Board& board,
+                                            BitBoard start0,
+                                            Color color);
    Board board_;
    int num_pieces_;
    ColorGraph black_;
    ColorGraph white_;
-
-   // Deduces the next player based on the ColorNodes.
-   int player(const ColorNode* black, const ColorNode* white) const noexcept;
 };
 
 #endif /* Graph_h */

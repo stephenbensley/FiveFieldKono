@@ -10,8 +10,8 @@
 Graph::Graph(const Board& board, BitBoard start0)
 : board_(board),
   num_pieces_(count_set_bits(start0)),
-  black_(board, BLACK, board.color_bitboard(BLACK, start0)),
-  white_(board, WHITE, board.color_bitboard(WHITE, start0))
+  black_(board, BLACK, get_start_positions(board, start0, BLACK)),
+  white_(board, WHITE, get_start_positions(board, start0, WHITE))
 { }
 
 Node Graph::start() const noexcept
@@ -63,3 +63,16 @@ int Graph::player(const ColorNode* black, const ColorNode* white) const noexcept
    auto parity = (black->parity() + white->parity()) % num_players;
    return (parity == start().parity()) ? 0 : 1;
 }
+
+ColorPosition Graph::get_start_positions(const Board& board,
+                                         BitBoard start0,
+                                         Color color)
+{
+   auto p0_cells = board.cells(start0);
+   auto p1_cells = board.reflect_y(p0_cells);
+   return {
+      board.color_bitboard(board.filter(p0_cells, color)),
+      board.color_bitboard(board.filter(p1_cells, color))
+   };
+}
+

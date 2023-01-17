@@ -17,7 +17,7 @@ TEST_CASE("ColorGraph::size")
    //    O O
    //     -
    //    X X
-   CHECK(ColorGraph({3,3}, BLACK, 0b11).size() == 16);
+   CHECK(ColorGraph({3,3}, BLACK, {0b00'0'11,0b11'0'00}).size() == 16);
 
    // White has four cells and 1 piece per player.
    // 4!/2! = 12 positions.
@@ -26,7 +26,7 @@ TEST_CASE("ColorGraph::size")
    //     O
    //    - -
    //     X
-   CHECK(ColorGraph({3,3}, WHITE, 0b01).size() == 7);
+   CHECK(ColorGraph({3,3}, WHITE, {0b0'00'1,0b1'00'0}).size() == 7);
 }
 
 TEST_CASE("ColorGraph::start")
@@ -40,18 +40,22 @@ TEST_CASE("ColorGraph::start")
       //     - -
       //    X X X
       //
-      ColorGraph graph({5,5}, BLACK, 0b000'00'000'00'111);
-      auto start = graph.start();
+      ColorPosition start_pos = {
+         0b000'00'000'00'111,
+         0b111'00'000'00'000
+      };
+      ColorGraph graph({5,5}, BLACK, start_pos);
+      auto start_node = graph.start();
 
-      CHECK(start->player[0].pieces == 0b000'00'000'00'111);
-      CHECK(!start->player[0].goal_reached);
-      CHECK(start->player[0].goal_full);
-      CHECK(start->player[0].distance == 12);
+      CHECK(start_node->player[0].pieces == start_pos[0]);
+      CHECK(!start_node->player[0].goal_reached);
+      CHECK(start_node->player[0].goal_full);
+      CHECK(start_node->player[0].distance == 12);
 
-      CHECK(start->player[1].pieces == 0b111'00'000'00'000);
-      CHECK(!start->player[1].goal_reached);
-      CHECK(start->player[1].goal_full);
-      CHECK(start->player[0].distance == 12);
+      CHECK(start_node->player[1].pieces == start_pos[1]);
+      CHECK(!start_node->player[1].goal_reached);
+      CHECK(start_node->player[1].goal_full);
+      CHECK(start_node->player[0].distance == 12);
 
       // Only two moves for X:
       //    O O O
@@ -66,11 +70,11 @@ TEST_CASE("ColorGraph::start")
       //     X -
       //    X - X
       //
-      REQUIRE(start->player[0].moves.size() == 2);
-      CHECK(start->player[0].moves[0]->player[0].pieces == 0b000'00'000'01'110);
-      CHECK(start->player[0].moves[0]->player[1].pieces == 0b111'00'000'00'000);
-      CHECK(start->player[0].moves[1]->player[0].pieces == 0b000'00'000'01'101);
-      CHECK(start->player[0].moves[1]->player[1].pieces == 0b111'00'000'00'000);
+      REQUIRE(start_node->player[0].moves.size() == 2);
+      CHECK(start_node->player[0].moves[0]->player[0].pieces == 0b000'00'000'01'110);
+      CHECK(start_node->player[0].moves[0]->player[1].pieces == 0b111'00'000'00'000);
+      CHECK(start_node->player[0].moves[1]->player[0].pieces == 0b000'00'000'01'101);
+      CHECK(start_node->player[0].moves[1]->player[1].pieces == 0b111'00'000'00'000);
 
       // O's moves:
       //    O O -
@@ -85,11 +89,11 @@ TEST_CASE("ColorGraph::start")
       //     - -
       //    X X X
       //
-      REQUIRE(start->player[0].moves.size() == 2);
-      CHECK(start->player[1].moves[0]->player[1].pieces == 0b011'10'000'00'000);
-      CHECK(start->player[1].moves[0]->player[0].pieces == 0b000'00'000'00'111);
-      CHECK(start->player[1].moves[1]->player[1].pieces == 0b101'01'000'00'000);
-      CHECK(start->player[1].moves[1]->player[0].pieces == 0b000'00'000'00'111);
+      REQUIRE(start_node->player[0].moves.size() == 2);
+      CHECK(start_node->player[1].moves[0]->player[1].pieces == 0b011'10'000'00'000);
+      CHECK(start_node->player[1].moves[0]->player[0].pieces == 0b000'00'000'00'111);
+      CHECK(start_node->player[1].moves[1]->player[1].pieces == 0b101'01'000'00'000);
+      CHECK(start_node->player[1].moves[1]->player[0].pieces == 0b000'00'000'00'111);
    }
 
    SECTION("White initial position")
@@ -101,18 +105,22 @@ TEST_CASE("ColorGraph::start")
       //    X - X
       //     X X
       //
-      ColorGraph graph({5,5}, WHITE, 0b00'000'00'101'11);
-      auto start = graph.start();
+      ColorPosition start_pos = {
+         0b00'000'00'101'11,
+         0b11'101'00'000'00
+      };
+      ColorGraph graph({5,5}, WHITE, start_pos);
+      auto start_node = graph.start();
 
-      CHECK(start->player[0].pieces == 0b00'000'00'101'11);
-      CHECK(!start->player[0].goal_reached);
-      CHECK(start->player[0].goal_full);
-      CHECK(start->player[0].distance == 12);
+      CHECK(start_node->player[0].pieces == start_pos[0]);
+      CHECK(!start_node->player[0].goal_reached);
+      CHECK(start_node->player[0].goal_full);
+      CHECK(start_node->player[0].distance == 12);
 
-      CHECK(start->player[1].pieces == 0b11'101'00'000'00);
-      CHECK(!start->player[1].goal_reached);
-      CHECK(start->player[1].goal_full);
-      CHECK(start->player[0].distance == 12);
+      CHECK(start_node->player[1].pieces == start_pos[1]);
+      CHECK(!start_node->player[1].goal_reached);
+      CHECK(start_node->player[1].goal_full);
+      CHECK(start_node->player[0].distance == 12);
 
       // Only two moves for X:
       //     O O
@@ -127,11 +135,11 @@ TEST_CASE("ColorGraph::start")
       //    - - X
       //     X X
       //
-      REQUIRE(start->player[0].moves.size() == 2);
-      CHECK(start->player[0].moves[0]->player[0].pieces == 0b00'000'00'111'01);
-      CHECK(start->player[0].moves[0]->player[1].pieces == 0b11'101'00'000'00);
-      CHECK(start->player[0].moves[1]->player[0].pieces == 0b00'000'01'100'11);
-      CHECK(start->player[0].moves[1]->player[1].pieces == 0b11'101'00'000'00);
+      REQUIRE(start_node->player[0].moves.size() == 2);
+      CHECK(start_node->player[0].moves[0]->player[0].pieces == 0b00'000'00'111'01);
+      CHECK(start_node->player[0].moves[0]->player[1].pieces == 0b11'101'00'000'00);
+      CHECK(start_node->player[0].moves[1]->player[0].pieces == 0b00'000'01'100'11);
+      CHECK(start_node->player[0].moves[1]->player[1].pieces == 0b11'101'00'000'00);
 
       // O's moves:
       //     O O
@@ -146,10 +154,10 @@ TEST_CASE("ColorGraph::start")
       //    X - X
       //     X X
       //
-      REQUIRE(start->player[0].moves.size() == 2);
-      CHECK(start->player[1].moves[0]->player[1].pieces == 0b11'001'10'000'00);
-      CHECK(start->player[1].moves[0]->player[0].pieces == 0b00'000'00'101'11);
-      CHECK(start->player[1].moves[1]->player[1].pieces == 0b01'111'00'000'00);
-      CHECK(start->player[1].moves[1]->player[0].pieces == 0b00'000'00'101'11);
+      REQUIRE(start_node->player[0].moves.size() == 2);
+      CHECK(start_node->player[1].moves[0]->player[1].pieces == 0b11'001'10'000'00);
+      CHECK(start_node->player[1].moves[0]->player[0].pieces == 0b00'000'00'101'11);
+      CHECK(start_node->player[1].moves[1]->player[1].pieces == 0b01'111'00'000'00);
+      CHECK(start_node->player[1].moves[1]->player[0].pieces == 0b00'000'00'101'11);
    }
 }
