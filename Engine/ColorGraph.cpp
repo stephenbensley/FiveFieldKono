@@ -116,7 +116,7 @@ ColorNode ColorGraph::build_node(uint16_t index,
    auto all_pieces = p0.pieces | p1.pieces;
    return {
       index,
-      {
+      {{
          {
             p0.pieces,
             (p0.pieces & goal0) != 0,
@@ -130,7 +130,7 @@ ColorNode ColorGraph::build_node(uint16_t index,
             p1.distance[1]
          }
       }
-   };
+   }};
 }
 
 void ColorGraph::build_nodes(const Positions& positions,

@@ -39,7 +39,7 @@ struct ColorNode {
    // Densely-packed integer [0,N) that uniquely identifies the node.
    uint16_t index;
    // Each player's state for the node.
-   Player player[num_players];
+   std::array<Player, num_players> player;
    // The parity changes whenever a move is made. The parity of the node is
    // useful for determining whose turn it is.
    int parity() const noexcept;
