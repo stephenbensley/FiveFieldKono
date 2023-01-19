@@ -17,7 +17,9 @@ class Graph
 public:
    // start0 is the starting location of player 0's pieces. Player 1's start
    // position is simply the reflection of this.
-   Graph(const Board& board, BitBoard start0);
+   Graph(int width, int height, BitBoard start0);
+   // Returns the game board for this graph.
+   const Board& board() const noexcept;
    // Starting position of the game.
    Node start() const noexcept;
    // Returns any node based on the piece positions.
@@ -41,5 +43,10 @@ private:
    ColorGraph black_;
    ColorGraph white_;
 };
+
+inline const Board& Graph::board() const noexcept
+{
+   return board_;
+}
 
 #endif /* Graph_h */

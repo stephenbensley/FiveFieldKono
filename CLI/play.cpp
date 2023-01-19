@@ -5,40 +5,39 @@
 // license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
 //
 
-#include "Graph.h"
-#include "MiniMax.h"
+#include "Strategy.h"
 #include "ToString.h"
 #include <iostream>
 
 int main(int argc, char* const argv[])
 {
    // Build the game.
-   Board board(3, 3);
-   Graph graph(board, 0b111);
-   MiniMax solver(graph);
+   Graph graph(5, 5, 0b10001'11111);
+   Strategy strategy(graph);
+   strategy.load("strategy.dat");
 
    // Initial state.
    auto node = graph.start();
-   auto pos = node.position(board);
+   auto pos = node.position(graph.board());
    auto player = node.player();
    auto move_count = 0;
 
    // Display the starting board.
    std::cout << "Start" << std::endl;
-   std::cout << to_string(board, pos) << std::endl;
+   std::cout << to_string(graph.board(), pos) << std::endl;
 
    while (!node.is_terminal() && move_count < 100) {
       // Calculate the next move.
-      auto next_node = solver.best_move(node, 100 - move_count);
-      auto next_pos = next_node.position(board);
+      auto next_node = strategy.best_move(node);
+      auto next_pos = next_node.position(graph.board());
 
       // Output the result.
       std::cout << "Player " << player + 1 << ": "
-                << to_string(board, pos[player], next_pos[player]);
+                << to_string(graph.board(), pos[player], next_pos[player]);
       if (next_node.is_terminal()) {
          std::cout << "!";
       }
-      std::cout << '\n' << to_string(board, next_pos) << std::endl;
+      std::cout << '\n' << to_string(graph.board(), next_pos) << std::endl;
 
       // Update state.
       node = next_node;

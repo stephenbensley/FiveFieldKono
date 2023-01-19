@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-               BuildableName = "obatgonu"
-               BlueprintName = "obatgonu"
+               BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+               BuildableName = "analyze"
+               BlueprintName = "analyze"
                ReferencedContainer = "container:obatgonu.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -45,9 +45,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-            BuildableName = "obatgonu"
-            BlueprintName = "obatgonu"
+            BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+            BuildableName = "analyze"
+            BlueprintName = "analyze"
             ReferencedContainer = "container:obatgonu.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-            BuildableName = "obatgonu"
-            BlueprintName = "obatgonu"
+            BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+            BuildableName = "analyze"
+            BlueprintName = "analyze"
             ReferencedContainer = "container:obatgonu.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

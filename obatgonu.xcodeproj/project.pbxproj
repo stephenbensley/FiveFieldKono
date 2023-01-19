@@ -10,22 +10,20 @@
 		DC28F4FD296DE52B005FDC40 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F4FC296DE52B005FDC40 /* Node.cpp */; };
 		DC28F501296E4928005FDC40 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F500296E4928005FDC40 /* Board.cpp */; };
 		DC28F504296F7D80005FDC40 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F503296F7D80005FDC40 /* Graph.cpp */; };
-		DC28F512296F970B005FDC40 /* obatgonu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F506296F96EE005FDC40 /* obatgonu.cpp */; };
+		DC28F512296F970B005FDC40 /* play.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC28F506296F96EE005FDC40 /* play.cpp */; };
 		DC28F514296F9760005FDC40 /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libEngine.a */; };
+		DC63CA8D29776C7E00ACA6F9 /* analyze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC63CA8129776C5700ACA6F9 /* analyze.cpp */; };
+		DC63CA8E29776D0D00ACA6F9 /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libEngine.a */; };
+		DC63CA922978644300ACA6F9 /* Retrograde.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC63CA7F29776AA800ACA6F9 /* Retrograde.cpp */; };
+		DC63CA952979DC4800ACA6F9 /* Strategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC63CA942979DC4800ACA6F9 /* Strategy.cpp */; };
 		DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51CE297214600002DC6C /* BoardTest.cpp */; };
 		DCAB51D629734F2A0002DC6C /* ColorGraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */; };
 		DCAB51D829736A1E0002DC6C /* GraphTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D729736A1E0002DC6C /* GraphTest.cpp */; };
-		DCAB51DA297495A90002DC6C /* RepetitionTableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */; };
-		DCAB51DC2974970A0002DC6C /* TranspositionTableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51DB2974970A0002DC6C /* TranspositionTableTest.cpp */; };
 		DCAB51DE2975F4590002DC6C /* ToString.h in Headers */ = {isa = PBXBuildFile; fileRef = DCAB51DD2975F4590002DC6C /* ToString.h */; };
 		DCAB51E02975F5040002DC6C /* ToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCAB51DF2975F5040002DC6C /* ToString.cpp */; };
 		DCEE839F296B42FA00A871AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE839E296B42FA00A871AE /* main.cpp */; };
-		DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCEE83A7296B666900A871AE /* MiniMax.cpp */; };
 		DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834602971D59000DF81FD /* ColorGraph.cpp */; };
-		DCF834652971F31F00DF81FD /* MiniMaxTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */; };
 		DCF834662971F40700DF81FD /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEE8388296B373400A871AE /* libEngine.a */; };
-		DCF8346A2971F42500DF81FD /* RepetitionTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF834692971F42400DF81FD /* RepetitionTable.cpp */; };
-		DCF8346C2971F64D00DF81FD /* TranspositionTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +33,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DCEE8387296B373400A871AE;
 			remoteInfo = GameTree;
+		};
+		DC63CA8F29776D0D00ACA6F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCEE836E296B370C00A871AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCEE8387296B373400A871AE;
+			remoteInfo = Engine;
 		};
 		DCF834672971F40700DF81FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -47,6 +52,15 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DC28F509296F9700005FDC40 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		DC63CA8429776C6800ACA6F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -72,29 +86,26 @@
 		DC28F500296E4928005FDC40 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		DC28F502296F4F7F005FDC40 /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		DC28F503296F7D80005FDC40 /* Graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
-		DC28F506296F96EE005FDC40 /* obatgonu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = obatgonu.cpp; sourceTree = "<group>"; };
-		DC28F50B296F9700005FDC40 /* obatgonu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = obatgonu; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC28F506296F96EE005FDC40 /* play.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = play.cpp; sourceTree = "<group>"; };
+		DC28F50B296F9700005FDC40 /* play */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = play; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC63CA7E29776A7000ACA6F9 /* Retrograde.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Retrograde.h; sourceTree = "<group>"; };
+		DC63CA7F29776AA800ACA6F9 /* Retrograde.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Retrograde.cpp; sourceTree = "<group>"; };
+		DC63CA8129776C5700ACA6F9 /* analyze.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = analyze.cpp; sourceTree = "<group>"; };
+		DC63CA8629776C6800ACA6F9 /* analyze */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = analyze; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC63CA932979DB6900ACA6F9 /* Strategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Strategy.h; sourceTree = "<group>"; };
+		DC63CA942979DC4800ACA6F9 /* Strategy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Strategy.cpp; sourceTree = "<group>"; };
 		DCAB51CE297214600002DC6C /* BoardTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoardTest.cpp; sourceTree = "<group>"; };
 		DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColorGraphTest.cpp; sourceTree = "<group>"; };
 		DCAB51D729736A1E0002DC6C /* GraphTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GraphTest.cpp; sourceTree = "<group>"; };
-		DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RepetitionTableTest.cpp; sourceTree = "<group>"; };
-		DCAB51DB2974970A0002DC6C /* TranspositionTableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TranspositionTableTest.cpp; sourceTree = "<group>"; };
 		DCAB51DD2975F4590002DC6C /* ToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToString.h; sourceTree = "<group>"; };
 		DCAB51DF2975F5040002DC6C /* ToString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ToString.cpp; sourceTree = "<group>"; };
 		DCEE8388296B373400A871AE /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE8397296B42D100A871AE /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		DCEE839C296B42FA00A871AE /* run_tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run_tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE839E296B42FA00A871AE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		DCEE83A6296B662400A871AE /* MiniMax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniMax.h; sourceTree = "<group>"; };
-		DCEE83A7296B666900A871AE /* MiniMax.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MiniMax.cpp; sourceTree = "<group>"; };
 		DCEE83A9296B66B100A871AE /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; wrapsLines = 0; };
-		DCEE83AA296B693200A871AE /* TranspositionTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranspositionTable.h; sourceTree = "<group>"; };
-		DCEE83AB296B6A7000A871AE /* RepetitionTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepetitionTable.h; sourceTree = "<group>"; };
 		DCF8345F2971D49E00DF81FD /* ColorGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorGraph.h; sourceTree = "<group>"; };
 		DCF834602971D59000DF81FD /* ColorGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColorGraph.cpp; sourceTree = "<group>"; };
-		DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MiniMaxTest.cpp; sourceTree = "<group>"; };
-		DCF834692971F42400DF81FD /* RepetitionTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RepetitionTable.cpp; sourceTree = "<group>"; };
-		DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TranspositionTable.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +114,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC28F514296F9760005FDC40 /* libEngine.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC63CA8329776C6800ACA6F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC63CA8E29776D0D00ACA6F9 /* libEngine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +146,8 @@
 		DC28F505296F96C2005FDC40 /* CLI */ = {
 			isa = PBXGroup;
 			children = (
-				DC28F506296F96EE005FDC40 /* obatgonu.cpp */,
+				DC28F506296F96EE005FDC40 /* play.cpp */,
+				DC63CA8129776C5700ACA6F9 /* analyze.cpp */,
 			);
 			path = CLI;
 			sourceTree = "<group>";
@@ -156,7 +176,8 @@
 			children = (
 				DCEE8388296B373400A871AE /* libEngine.a */,
 				DCEE839C296B42FA00A871AE /* run_tests */,
-				DC28F50B296F9700005FDC40 /* obatgonu */,
+				DC28F50B296F9700005FDC40 /* play */,
+				DC63CA8629776C6800ACA6F9 /* analyze */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,16 +191,14 @@
 				DCF8345F2971D49E00DF81FD /* ColorGraph.h */,
 				DC28F503296F7D80005FDC40 /* Graph.cpp */,
 				DC28F502296F4F7F005FDC40 /* Graph.h */,
-				DCEE83A7296B666900A871AE /* MiniMax.cpp */,
-				DCEE83A6296B662400A871AE /* MiniMax.h */,
 				DC28F4FC296DE52B005FDC40 /* Node.cpp */,
 				DCEE83A9296B66B100A871AE /* Node.h */,
-				DCF834692971F42400DF81FD /* RepetitionTable.cpp */,
-				DCEE83AB296B6A7000A871AE /* RepetitionTable.h */,
-				DCF8346B2971F64D00DF81FD /* TranspositionTable.cpp */,
-				DCEE83AA296B693200A871AE /* TranspositionTable.h */,
 				DCAB51DD2975F4590002DC6C /* ToString.h */,
 				DCAB51DF2975F5040002DC6C /* ToString.cpp */,
+				DC63CA7E29776A7000ACA6F9 /* Retrograde.h */,
+				DC63CA7F29776AA800ACA6F9 /* Retrograde.cpp */,
+				DC63CA932979DB6900ACA6F9 /* Strategy.h */,
+				DC63CA942979DC4800ACA6F9 /* Strategy.cpp */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -199,9 +218,6 @@
 				DCAB51D529734F2A0002DC6C /* ColorGraphTest.cpp */,
 				DCAB51D729736A1E0002DC6C /* GraphTest.cpp */,
 				DCEE839E296B42FA00A871AE /* main.cpp */,
-				DCF834642971F31F00DF81FD /* MiniMaxTest.cpp */,
-				DCAB51D9297495A90002DC6C /* RepetitionTableTest.cpp */,
-				DCAB51DB2974970A0002DC6C /* TranspositionTableTest.cpp */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -220,9 +236,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DC28F50A296F9700005FDC40 /* obatgonu */ = {
+		DC28F50A296F9700005FDC40 /* play */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DC28F50F296F9700005FDC40 /* Build configuration list for PBXNativeTarget "obatgonu" */;
+			buildConfigurationList = DC28F50F296F9700005FDC40 /* Build configuration list for PBXNativeTarget "play" */;
 			buildPhases = (
 				DC28F507296F9700005FDC40 /* Sources */,
 				DC28F508296F9700005FDC40 /* Frameworks */,
@@ -233,9 +249,27 @@
 			dependencies = (
 				DC28F516296F9760005FDC40 /* PBXTargetDependency */,
 			);
-			name = obatgonu;
+			name = play;
 			productName = obatgonu;
-			productReference = DC28F50B296F9700005FDC40 /* obatgonu */;
+			productReference = DC28F50B296F9700005FDC40 /* play */;
+			productType = "com.apple.product-type.tool";
+		};
+		DC63CA8529776C6800ACA6F9 /* analyze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC63CA8A29776C6800ACA6F9 /* Build configuration list for PBXNativeTarget "analyze" */;
+			buildPhases = (
+				DC63CA8229776C6800ACA6F9 /* Sources */,
+				DC63CA8329776C6800ACA6F9 /* Frameworks */,
+				DC63CA8429776C6800ACA6F9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC63CA9029776D0D00ACA6F9 /* PBXTargetDependency */,
+			);
+			name = analyze;
+			productName = analyze;
+			productReference = DC63CA8629776C6800ACA6F9 /* analyze */;
 			productType = "com.apple.product-type.tool";
 		};
 		DCEE8387296B373400A871AE /* Engine */ = {
@@ -285,6 +319,9 @@
 					DC28F50A296F9700005FDC40 = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					DC63CA8529776C6800ACA6F9 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					DCEE8387296B373400A871AE = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -308,7 +345,8 @@
 			targets = (
 				DCEE8387296B373400A871AE /* Engine */,
 				DCEE839B296B42FA00A871AE /* run_tests */,
-				DC28F50A296F9700005FDC40 /* obatgonu */,
+				DC28F50A296F9700005FDC40 /* play */,
+				DC63CA8529776C6800ACA6F9 /* analyze */,
 			);
 		};
 /* End PBXProject section */
@@ -318,7 +356,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC28F512296F970B005FDC40 /* obatgonu.cpp in Sources */,
+				DC28F512296F970B005FDC40 /* play.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC63CA8229776C6800ACA6F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC63CA8D29776C7E00ACA6F9 /* analyze.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,10 +373,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC28F501296E4928005FDC40 /* Board.cpp in Sources */,
-				DCEE83A8296B666900A871AE /* MiniMax.cpp in Sources */,
 				DC28F504296F7D80005FDC40 /* Graph.cpp in Sources */,
-				DCF8346C2971F64D00DF81FD /* TranspositionTable.cpp in Sources */,
-				DCF8346A2971F42500DF81FD /* RepetitionTable.cpp in Sources */,
+				DC63CA952979DC4800ACA6F9 /* Strategy.cpp in Sources */,
+				DC63CA922978644300ACA6F9 /* Retrograde.cpp in Sources */,
 				DC28F4FD296DE52B005FDC40 /* Node.cpp in Sources */,
 				DCF834612971D59000DF81FD /* ColorGraph.cpp in Sources */,
 				DCAB51E02975F5040002DC6C /* ToString.cpp in Sources */,
@@ -345,9 +390,6 @@
 				DCAB51D829736A1E0002DC6C /* GraphTest.cpp in Sources */,
 				DCEE839F296B42FA00A871AE /* main.cpp in Sources */,
 				DCAB51CF297214600002DC6C /* BoardTest.cpp in Sources */,
-				DCF834652971F31F00DF81FD /* MiniMaxTest.cpp in Sources */,
-				DCAB51DC2974970A0002DC6C /* TranspositionTableTest.cpp in Sources */,
-				DCAB51DA297495A90002DC6C /* RepetitionTableTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +400,11 @@
 			isa = PBXTargetDependency;
 			target = DCEE8387296B373400A871AE /* Engine */;
 			targetProxy = DC28F515296F9760005FDC40 /* PBXContainerItemProxy */;
+		};
+		DC63CA9029776D0D00ACA6F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCEE8387296B373400A871AE /* Engine */;
+			targetProxy = DC63CA8F29776D0D00ACA6F9 /* PBXContainerItemProxy */;
 		};
 		DCF834682971F40700DF81FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -383,6 +430,28 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X2P4HJBQW;
 				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DC63CA8B29776C6800ACA6F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DC63CA8C29776C6800ACA6F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6X2P4HJBQW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -483,6 +552,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -545,11 +615,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DC28F50F296F9700005FDC40 /* Build configuration list for PBXNativeTarget "obatgonu" */ = {
+		DC28F50F296F9700005FDC40 /* Build configuration list for PBXNativeTarget "play" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC28F510296F9700005FDC40 /* Debug */,
 				DC28F511296F9700005FDC40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC63CA8A29776C6800ACA6F9 /* Build configuration list for PBXNativeTarget "analyze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC63CA8B29776C6800ACA6F9 /* Debug */,
+				DC63CA8C29776C6800ACA6F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

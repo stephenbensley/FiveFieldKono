@@ -22,6 +22,9 @@ public:
    std::pair<uint16_t, uint16_t> indices() const noexcept;
    // Location of pieces.
    GamePosition position(const Board& board) const noexcept;
+   // Returns true if this node was default constructed. Useful for detecting
+   // nodes that haven't been initialized to an actual game node.
+   bool is_null() const noexcept;
    // Return true if the game is over once this node is reached.
    bool is_terminal() const noexcept;
    // Returns true if the current player has no moves available. This is much
@@ -58,6 +61,11 @@ inline int Node::player() const noexcept
 inline std::pair<uint16_t, uint16_t> Node::indices() const noexcept
 {
    return { black_->index, white_->index };
+}
+
+inline bool Node::is_null() const noexcept
+{
+   return black_ == nullptr;
 }
 
 inline int Node::parity() const noexcept

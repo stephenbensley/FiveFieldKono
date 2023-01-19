@@ -274,7 +274,7 @@ ColorBitBoards Board::moves(const Cells& from) const
 std::vector<std::vector<int>> generate_combos(int n, int k)
 {
    assert(n > 0);
-   assert(k > 0);
+   assert(k >= 0);
    assert(k <= n);
 
    std::vector<bool> v(n);

@@ -7,11 +7,11 @@
 
 #include "Graph.h"
 
-Graph::Graph(const Board& board, BitBoard start0)
-: board_(board),
+Graph::Graph(int width, int height, BitBoard start0)
+: board_(width, height),
   num_pieces_(count_set_bits(start0)),
-  black_(board, BLACK, get_start_positions(board, start0, BLACK)),
-  white_(board, WHITE, get_start_positions(board, start0, WHITE))
+  black_(board_, BLACK, get_start_positions(board_, start0, BLACK)),
+  white_(board_, WHITE, get_start_positions(board_, start0, WHITE))
 { }
 
 Node Graph::start() const noexcept
