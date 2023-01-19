@@ -23,6 +23,8 @@ Node Strategy::best_move(const Node& from) const noexcept
 
    auto moves = from.moves();
    assert(!moves.empty());
+   // In the case of ties, prefer more aggressive moves. Not that it reallly
+   // matters, but it's as good a tiebreaker as any.
    std::sort(moves.begin(), moves.end(), [](auto lhs, auto rhs) {
       return lhs.distance() < rhs.distance();
    });
@@ -40,17 +42,6 @@ Node Strategy::best_move(const Node& from) const noexcept
    assert(!best_move.is_null());
    return best_move;
 }
-
-Strategy::Entry Strategy::find(const Node& node) const noexcept
-{
-   return entries_[graph_.index(node)];
-}
-
-Strategy::Entry& Strategy::find(const Node& node) noexcept
-{
-   return entries_[graph_.index(node)];
-}
-
 
 bool Strategy::load(const char* filename)
 {
@@ -72,4 +63,14 @@ void Strategy::save(const char* filename) const noexcept
    std::ofstream ostrm(filename, std::ios::binary | std::ios::trunc);
    auto bytes = sizeof(Entry) * entries_.size();
    ostrm.write(reinterpret_cast<const char*>(entries_.data()), bytes);
+}
+
+Strategy::Entry Strategy::find(const Node& node) const noexcept
+{
+   return entries_[graph_.index(node)];
+}
+
+Strategy::Entry& Strategy::find(const Node& node) noexcept
+{
+   return entries_[graph_.index(node)];
 }

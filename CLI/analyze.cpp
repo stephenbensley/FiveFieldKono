@@ -5,9 +5,7 @@
 // license at https://github.com/stephenbensley/obatgonu/blob/main/LICENSE.
 //
 
-#include "Graph.h"
 #include "Retrograde.h"
-#include "ToString.h"
 
 #include <iostream>
 
@@ -15,8 +13,10 @@ int main(int argc, char* const argv[])
 {
    Graph graph(5, 5, 0b10001'11111);
    Retrograde retro(graph);
+   std::cout << "Starting analysis." << std::endl;
    auto value = retro.analyze();
-   std::cout << "Value of start position: " << value << std::endl;
+   std::cout << "Analysis complete.\n"
+             << "Value of start position: " << value << std::endl;
    retro.strategy().save("strategy.dat");
    return 0;
 }

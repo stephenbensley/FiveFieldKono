@@ -8,7 +8,6 @@
 #include "Retrograde.h"
 #include "ToString.h"
 #include <future>
-#include <iostream>
 
 Retrograde::Retrograde(const Graph& graph)
 : num_workers_(std::thread::hardware_concurrency()),
@@ -19,12 +18,9 @@ Retrograde::Retrograde(const Graph& graph)
 
 int Retrograde::analyze()
 {
-   auto total = 0;
    for (auto depth = 0; depth < strategy_.max_depth(); ++depth) {
-      std::cout << "Depth " << depth << ": " << std::flush;
       auto count = analyze_nodes(depth);
-      total += count;
-      std::cout << "+" << count << "=" << total << "/" << num_nodes_ << std::endl;
+      // If no nodes were updated, we can't make any more progress.
       if (count == 0) {
          break;
       }
@@ -68,7 +64,7 @@ bool Retrograde::analyze_node(const Node& node, int depth) noexcept
    auto moves = node.moves();
    assert(moves.size() != 0);
    for (auto move : moves) {
-      auto move_entry = strategy_.find(move);
+      Strategy::Entry move_entry = strategy_.find(move);
 
       // Ignore empty entries.
       if (move_entry.empty()) {

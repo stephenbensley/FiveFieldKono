@@ -11,7 +11,7 @@
 
 int main(int argc, char* const argv[])
 {
-   // Build the game.
+   // Build the game and load the strategy.
    Graph graph(5, 5, 0b10001'11111);
    Strategy strategy(graph);
    strategy.load("strategy.dat");
@@ -23,10 +23,10 @@ int main(int argc, char* const argv[])
    auto move_count = 0;
 
    // Display the starting board.
-   std::cout << "Start" << std::endl;
-   std::cout << to_string(graph.board(), pos) << std::endl;
+   std::cout << "Start:\n" << to_string(graph.board(), pos) << std::endl;
 
-   while (!node.is_terminal() && move_count < 100) {
+   // Terminate after 100 moves, so the game doesn't go on forever.
+   while (!node.is_terminal() && (move_count < 100)) {
       // Calculate the next move.
       auto next_node = strategy.best_move(node);
       auto next_pos = next_node.position(graph.board());

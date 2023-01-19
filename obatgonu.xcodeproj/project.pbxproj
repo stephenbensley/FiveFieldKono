@@ -146,8 +146,8 @@
 		DC28F505296F96C2005FDC40 /* CLI */ = {
 			isa = PBXGroup;
 			children = (
-				DC28F506296F96EE005FDC40 /* play.cpp */,
 				DC63CA8129776C5700ACA6F9 /* analyze.cpp */,
+				DC28F506296F96EE005FDC40 /* play.cpp */,
 			);
 			path = CLI;
 			sourceTree = "<group>";
@@ -193,12 +193,12 @@
 				DC28F502296F4F7F005FDC40 /* Graph.h */,
 				DC28F4FC296DE52B005FDC40 /* Node.cpp */,
 				DCEE83A9296B66B100A871AE /* Node.h */,
-				DCAB51DD2975F4590002DC6C /* ToString.h */,
-				DCAB51DF2975F5040002DC6C /* ToString.cpp */,
-				DC63CA7E29776A7000ACA6F9 /* Retrograde.h */,
 				DC63CA7F29776AA800ACA6F9 /* Retrograde.cpp */,
-				DC63CA932979DB6900ACA6F9 /* Strategy.h */,
+				DC63CA7E29776A7000ACA6F9 /* Retrograde.h */,
 				DC63CA942979DC4800ACA6F9 /* Strategy.cpp */,
+				DC63CA932979DB6900ACA6F9 /* Strategy.h */,
+				DCAB51DF2975F5040002DC6C /* ToString.cpp */,
+				DCAB51DD2975F4590002DC6C /* ToString.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";

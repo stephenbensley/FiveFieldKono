@@ -9,6 +9,7 @@
 #define Strategy_h
 
 #include "Graph.h"
+#include <limits>
 
 // Implements an optimal strategy for the game.
 class Strategy
@@ -18,9 +19,9 @@ public:
 
    // The maximum supported depth. If the game has a deeper graph, this class
    // will have to be updated.
-   int max_depth() const noexcept;
+   static constexpr int max_depth() noexcept;
 
-   // Execute the strategy and return the best move for the current position.
+   // Returns the best move for the current position.
    Node best_move(const Node& from) const noexcept;
 
    // Load/save the strategy from/to a file.
@@ -41,6 +42,7 @@ public:
       char value_;
    };
 
+   // Only used when building a new strategy.
    Entry& find(const Node& node) noexcept;
 
 private:
@@ -50,14 +52,17 @@ private:
    std::vector<Entry> entries_;
 };
 
-inline int Strategy::max_depth() const noexcept
+constexpr int Strategy::max_depth() noexcept
 {
-   return 127;
+   // Anything bigger than this will cause an overflow in the constructor.
+   return std::numeric_limits<char>::max() - 1;
 }
 
 inline Strategy::Entry::Entry(int winner, int depth) noexcept
 : value_(winner ? -(depth + 1) : (depth + 1))
-{ }
+{
+   assert(depth <= max_depth());
+}
 
 inline bool Strategy::Entry::empty() const noexcept
 {
