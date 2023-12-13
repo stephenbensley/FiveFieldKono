@@ -6,6 +6,7 @@
 //
 
 #include "Node.h"
+#include <cassert>
 
 Node::Node(int player, const ColorNode* black, const ColorNode* white) noexcept
 : player_(player),

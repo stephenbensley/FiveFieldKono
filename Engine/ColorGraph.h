@@ -9,6 +9,7 @@
 #define ColorGraph_h
 
 #include "Board.h"
+#include <cassert>
 #include <unordered_map>
 
 bool is_valid_player(int player) noexcept;
