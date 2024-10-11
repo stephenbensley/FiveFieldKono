@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-               BuildableName = "play"
-               BlueprintName = "play"
-               ReferencedContainer = "container:obatgonu.xcodeproj">
+               BlueprintIdentifier = "DCEE8387296B373400A871AE"
+               BuildableName = "libEngine.a"
+               BlueprintName = "Engine"
+               ReferencedContainer = "container:FiveFieldKono.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -39,18 +39,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      viewDebuggingEnabled = "No">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-            BuildableName = "play"
-            BlueprintName = "play"
-            ReferencedContainer = "container:obatgonu.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
+      allowLocationSimulation = "YES">
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -58,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DC28F50A296F9700005FDC40"
-            BuildableName = "play"
-            BlueprintName = "play"
-            ReferencedContainer = "container:obatgonu.xcodeproj">
+            BlueprintIdentifier = "DCEE8387296B373400A871AE"
+            BuildableName = "libEngine.a"
+            BlueprintName = "Engine"
+            ReferencedContainer = "container:FiveFieldKono.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

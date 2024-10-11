@@ -330,7 +330,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DCEE8371296B370C00A871AE /* Build configuration list for PBXProject "obatgonu" */;
+			buildConfigurationList = DCEE8371296B370C00A871AE /* Build configuration list for PBXProject "FiveFieldKono" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -633,7 +633,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCEE8371296B370C00A871AE /* Build configuration list for PBXProject "obatgonu" */ = {
+		DCEE8371296B370C00A871AE /* Build configuration list for PBXProject "FiveFieldKono" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCEE837F296B370C00A871AE /* Debug */,

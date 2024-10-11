@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DCEE839B296B42FA00A871AE"
-               BuildableName = "run_tests"
-               BlueprintName = "run_tests"
-               ReferencedContainer = "container:obatgonu.xcodeproj">
+               BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+               BuildableName = "analyze"
+               BlueprintName = "analyze"
+               ReferencedContainer = "container:FiveFieldKono.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -45,10 +45,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DCEE839B296B42FA00A871AE"
-            BuildableName = "run_tests"
-            BlueprintName = "run_tests"
-            ReferencedContainer = "container:obatgonu.xcodeproj">
+            BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+            BuildableName = "analyze"
+            BlueprintName = "analyze"
+            ReferencedContainer = "container:FiveFieldKono.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,10 +62,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DCEE839B296B42FA00A871AE"
-            BuildableName = "run_tests"
-            BlueprintName = "run_tests"
-            ReferencedContainer = "container:obatgonu.xcodeproj">
+            BlueprintIdentifier = "DC63CA8529776C6800ACA6F9"
+            BuildableName = "analyze"
+            BlueprintName = "analyze"
+            ReferencedContainer = "container:FiveFieldKono.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
