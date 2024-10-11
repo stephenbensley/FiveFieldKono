@@ -29,4 +29,4 @@ The Xcode project has the following targets:
 - Engine: Static library consumed by the other targets
 - run_tests: Unit tests implemented using [Catch2](https://github.com/catchorg/Catch2)
 - play: Plays both sides of a game of Five-Field Kono using the optimal strategy
-- analyze: Solves the game of Five-Field Kono.
+- analyze: Solves the game of Five-Field Kono
