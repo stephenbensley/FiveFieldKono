@@ -1,4 +1,4 @@
- <img src="app-icon.png" alt="icon" width="75" height="75">
+<img src="app-icon.png" alt="icon" width="75" height="75">
 
 # Five-Field Kono
 
